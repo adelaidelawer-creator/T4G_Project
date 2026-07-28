@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Cart | AL Luxe</title>
+
+    <link rel="stylesheet" href="../src/style.css">
+
+    <!-- Google Fonts -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header>
+
+        <div class="logo">
+
+            <h2>AL Luxe</h2>
+
+        </div>
+
+        <nav>
+
+            <ul>
+
+                <li><a href="../index.html">Home</a></li>
+
+                <li><a href="about.html">About</a></li>
+
+
+                <li><a href="services.html">Services</a></li>
+
+                <li><a href="contact.html">Contact</a></li>
+
+                <li><a href="login.html">Login</a></li>
+
+                <li><a href="signup.html">Sign Up</a></li>
+
+                 <li>
+
+                <a href="#">
+
+                    <i class="fa-regular fa-heart"></i>
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="#">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                </a>
+
+            </li>
+
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+    <!-- ================= HERO ================= -->
+
+    <section class="about-preview">
+
+        <h1>Shopping Cart</h1>
+
+        <p>
+
+            Review your selected luxury jewelry before completing your order.
+
+        </p>
+
+    </section>
+
+    <!-- ================= CHECKOUT STEPS ================= -->
+
+    <section class="checkout-progress">
+
+        <div class="step active">
+
+            <i class="fa-solid fa-cart-shopping"></i>
+
+            <p>Cart</p>
+
+        </div>
+
+        <div class="line"></div>
+
+        <div class="step">
+
+            <i class="fa-solid fa-truck-fast"></i>
+
+            <p>Shipping</p>
+
+        </div>
+
+        <div class="line"></div>
+
+        <div class="step">
+
+            <i class="fa-solid fa-credit-card"></i>
+
+            <p>Payment</p>
+
+        </div>
+
+        <div class="line"></div>
+
+        <div class="step">
+
+            <i class="fa-solid fa-circle-check"></i>
+
+            <p>Complete</p>
+
+        </div>
+
+    </section>
+
+    <!-- ================= CART ================= -->
+
+    <section class="cart-section">
+
+        <div class="cart-items">
+
+            <!-- PRODUCT 1 -->
+
+            <div class="cart-item">
+
+                <img src="../images/diamond ring.jpg" alt="Diamond Ring">
+
+                <div class="cart-details">
+
+                    <h2>18K Gold Diamond Ring</h2>
+
+                    <p>
+
+                        A timeless handcrafted ring made with premium gold
+                        and sparkling diamonds.
+
+                    </p>
+
+                    <div class="rating">
+
+                        <i class="fa-solid fa-star"></i>
+
+                        <i class="fa-solid fa-star"></i>
+
+                        <i class="fa-solid fa-star"></i>
+
+                        <i class="fa-solid fa-star"></i>
+
+                        <i class="fa-solid fa-star"></i>
+
+                        <span>4.9</span>
+
+                    </div>
+
+                    <h3>GH₵ 2,500</h3>
+
+                    <p class="save-item">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                        Save for Later
+
+                    </p>
+
+                </div>
+
+                <div class="quantity">
+
+                    <button>-</button>
+
+                    <span>1</span>
+
+                    <button>+</button>
+
+                </div>
+
+                <button class="remove-btn">
+
+                    <i class="fa-solid fa-trash"></i>
+
+                </button>
+
+            </div>
+
+            <!-- PRODUCT 2 -->
+
+            <div class="cart-item">
+
+                <img src="../images/pearl necklace.jpg" alt="Pearl Necklace">
+
+                <div class="cart-details">
+
+                    <h2>Pearl Necklace</h2>
+
+                    <p>
+
+                        Elegant freshwater pearls suitable for every occasion.
+
+                    </p>
+
+                    <div class="rating">
+
+                        <i class="fa-solid fa-star"></i>
+
+                        <i class="fa-solid fa-star"></i>
+
+                        <i class="fa-solid fa-star"></i>
+
+                        <i class="fa-solid fa-star"></i>
+
+                        <i class="fa-solid fa-star"></i>
+
+                        <span>5.0</span>
+
+                    </div>
+
+                    <h3>GH₵ 1,800</h3>
+
+                    <p class="save-item">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                        Save for Later
+
+                    </p>
+
+                </div>
+
+                <div class="quantity">
+
+                    <button>-</button>
+
+                    <span>1</span>
+
+                    <button>+</button>
+
+                </div>
+
+                <button class="remove-btn">
+
+                    <i class="fa-solid fa-trash"></i>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= COUPON ================= -->
+
+    <section class="coupon-section">
+
+        <h2>Have a Coupon?</h2>
+
+        <div class="coupon-box">
+
+            <input
+                type="text"
+                placeholder="Enter Coupon Code">
+
+            <button class="btn">
+
+                Apply
+
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- ================= RECOMMENDED PRODUCTS ================= -->
+
+    <section class="featured">
+
+        <h2>You May Also Like</h2>
+
+        <div class="cards">
+
+            <div class="card">
+
+                <img src="images/bangle.jpg" alt="Luxury Bangle">
+
+                <h3>Luxury Bangle</h3>
+
+                <p>GH₵950</p>
+
+                <a href="#" class="btn">
+
+                    Add to Cart
+
+                </a>
+
+            </div>
+
+            <div class="card">
+
+                <img src="images/watch.jpg" alt="Gold Watch">
+
+                <h3>Gold Watch</h3>
+
+                <p>GH₵3,000</p>
+
+                <a href="#" class="btn">
+
+                    Add to Cart
+
+                </a>
+
+            </div>
+
+            <div class="card">
+
+                <img src="images/earrings.jpg" alt="Diamond Earrings">
+
+                <h3>Diamond Earrings</h3>
+
+                <p>GH₵1,600</p>
+
+                <a href="#" class="btn">
+
+                    Add to Cart
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= ORDER SUMMARY ================= -->
+
+    <section class="cart-summary">
+
+        <div class="summary-card">
+
+            <h2>Order Summary</h2>
+
+            <hr>
+
+            <p>
+
+                <span>Subtotal</span>
+
+                <span>GH₵4,300</span>
+
+            </p>
+
+            <p>
+
+                <span>Delivery</span>
+
+                <span>GH₵50</span>
+
+            </p>
+
+            <p>
+
+                <span>Discount</span>
+
+                <span>GH₵0</span>
+
+            </p>
+
+            <hr>
+
+            <h3>
+
+                <span>Total</span>
+
+                <span>GH₵4,350</span>
+
+            </h3>
+
+            <div class="payment-icons">
+
+                <h4>Accepted Payments</h4>
+
+                <div>
+
+                    <i class="fa-brands fa-cc-visa"></i>
+
+                    <i class="fa-brands fa-cc-mastercard"></i>
+
+                    <i class="fa-brands fa-cc-paypal"></i>
+
+                    <i class="fa-solid fa-mobile-screen"></i>
+
+                </div>
+
+            </div>
+
+            <a href="#" class="btn checkout-btn">
+
+                Proceed to Checkout
+
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="footer-container">
+
+            <div class="footer-box">
+
+                <h3>AL Luxe</h3>
+
+                <p>
+
+                    Luxury jewelry designed to celebrate your elegance every day.
+
+                </p>
+
+            </div>
+
+            <div class="footer-box">
+
+                <h3>Quick Links</h3>
+
+                <a href="../index.html">Home</a>
+
+                <a href="about.html">About</a>
+
+                <a href="products.html">Products</a>
+
+                <a href="services.html">Services</a>
+
+            </div>
+
+            <div class="footer-box">
+
+                <h3>Contact Us</h3>
+
+                <p><i class="fa-solid fa-phone"></i> +233 55 123 4567</p>
+
+                <p><i class="fa-solid fa-envelope"></i> info@alluxe.com</p>
+
+                <p><i class="fa-solid fa-location-dot"></i> Accra, Ghana</p>
+
+            </div>
+
+            <div class="footer-box">
+
+                <h3>Follow Us</h3>
+
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+
+                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+
+                <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+
+            </div>
+
+        </div>
+
+        <hr>
+
+        <p class="copyright">
+
+            © 2026 AL Luxe. All Rights Reserved.
+
+        </p>
+
+    </footer>
+
+</body>
+
+</html>
