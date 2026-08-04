@@ -21,33 +21,38 @@
 
 <body>
 
+<div class="whatsapp-float">
+    <div class="whatsapp-tooltip">Chat on WhatsApp: +233 257 008 392</div>
+    <a href="https://wa.me/233257008392" target="_blank" rel="noopener noreferrer" class="whatsapp-pill" aria-label="Contact AL Luxe on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+</div>
+
 <!-- ================= HEADER ================= -->
 
 <header>
 
     <div class="logo">
-        <h2>AL Luxe</h2>
+        <img src="images/white logo.png" alt="AL Luxe Logo">
     </div>
 
     <nav>
 
         <ul>
 
-            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html" class="active">Home</a></li>
 
             <li><a href="pages/about.html">About</a></li>
 
-            <li><a href="services.html">Services</a></li>
+            <li><a href="pages/collections.html">Collections</a></li>
 
             <li><a href="pages/contact.html">Contact</a></li>
 
             <li><a href="pages/login.html">Login</a></li>
 
-            <li><a href="pages/signup.html">Sign Up</a></li>
-
             <li>
 
-                <a href="#">
+                <a href="pages/wishlist.html">
 
                     <i class="fa-regular fa-heart"></i>
 
@@ -57,7 +62,7 @@
 
             <li>
 
-                <a href="#">
+                <a href="pages/search.html">
 
                     <i class="fa-solid fa-magnifying-glass"></i>
 
@@ -95,8 +100,8 @@
             confidence and unforgettable moments.
         </p>
 
-        <a href="products.html" class="btn">
-            Shop Collection
+        <a href="pages/collections.html" class="btn">
+            Shop Signature Collections
         </a>
 
     </div>
@@ -126,11 +131,62 @@
 
 </section>
 
+<!-- ================= BRAND STORY ================= -->
+
+<section class="featured brand-story">
+
+    <h2>Crafted for Meaningful Moments</h2>
+
+    <div class="cards">
+
+        <div class="card">
+
+            <i class="fa-solid fa-gem fa-3x"></i>
+
+            <h3>Luxury Craftsmanship</h3>
+
+            <p>
+                Every piece is thoughtfully selected to deliver elegance,
+                confidence, and timeless beauty.
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <i class="fa-solid fa-crown fa-3x"></i>
+
+            <h3>Refined Design</h3>
+
+            <p>
+                From bold statement styles to daily essentials, our collections
+                are curated for modern luxury living.
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <i class="fa-solid fa-box-open fa-3x"></i>
+
+            <h3>Trusted Experience</h3>
+
+            <p>
+                Secure checkout, reliable delivery, and attentive customer care
+                keep every purchase seamless and confident.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
 <!-- ================= FEATURED COLLECTION ================= -->
 
 <section class="featured">
 
-    <h2>Featured Collection</h2>
+    <h2>Featured Collections</h2>
 
     <div class="cards">
 
@@ -144,7 +200,7 @@
                 Timeless gold jewelry designed to shine for every occasion.
             </p>
 
-            <a href="products.html" class="card-btn">
+            <a href="pages/collections.html" class="card-btn">
                 View Collection
             </a>
 
@@ -160,7 +216,7 @@
                 Elegant diamond pieces with modern luxury finishes.
             </p>
 
-            <a href="products.html" class="card-btn">
+            <a href="pages/collections.html" class="card-btn">
                 View Collection
             </a>
 
@@ -176,8 +232,74 @@
                 Classic pearl collections for refined beauty.
             </p>
 
-            <a href="products.html" class="card-btn">
+            <a href="pages/collections.html" class="card-btn">
                 View Collection
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= BEST SELLERS ================= -->
+
+<section class="featured best-sellers">
+
+    <h2>Best Sellers</h2>
+
+    <div class="cards">
+
+        <div class="card best-card">
+
+            <img src="images/Gold Butterfly Bracelet.jpg" alt="Gold bangle">
+
+            <h3>Aurelia Gold Bangle</h3>
+
+            <p>
+                A polished signature piece loved for its effortless shine.
+            </p>
+
+            <p class="price">GH₵ 160</p>
+
+            <a href="pages/product.details.html" class="card-btn">
+                Shop Now
+            </a>
+
+        </div>
+
+        <div class="card best-card">
+
+            <img src="images/cartier necklace.jpg" alt="Diamond Necklace">
+
+            <h3>Radiant Diamond Necklace</h3>
+
+            <p>
+                The perfect statement for elegant celebrations and special nights.
+            </p>
+
+            <p class="price">GH₵ 520</p>
+
+            <a href="pages/product.details.html" class="card-btn">
+                Shop Now
+            </a>
+
+        </div>
+
+        <div class="card best-card">
+
+            <img src="images/ring.jpg" alt="Pearl Rings">
+
+            <h3>Pearl Edit</h3>
+
+            <p>
+                Soft glamour with modern charm for timeless styling.
+            </p>
+
+            <p class="price">GH₵ 290</p>
+
+            <a href="pages/product.details.html" class="card-btn">
+                Shop Now
             </a>
 
         </div>
@@ -328,29 +450,6 @@
 
         <div class="footer-box">
 
-            <h3>Quick Links</h3>
-
-            <a href="index.html">Home</a>
-            <a href="pages/about.html">About</a>
-            <a href="pages/contact.html">Products</a>
-            <a href="pages/login.html">Login</a>
-
-        </div>
-
-        <div class="footer-box">
-
-            <h3>Contact</h3>
-
-            <p><i class="fa-solid fa-phone"></i> +233 55 123 4567</p>
-
-            <p><i class="fa-solid fa-envelope"></i> info@alluxe.com</p>
-
-            <p><i class="fa-solid fa-location-dot"></i> Accra, Ghana</p>
-
-        </div>
-
-        <div class="footer-box">
-
             <h3>Follow Us</h3>
 
             <a href="#"><i class="fa-brands fa-facebook"></i></a>
@@ -362,6 +461,33 @@
             <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
 
         </div>
+
+        
+        <div class="footer-box">
+
+            <h3>Contact</h3>
+
+            <p><i class="fa-solid fa-phone"></i> +233 25 700 8392</p>
+
+            <p><i class="fa-solid fa-envelope"></i> adelaidelawer@gmail.com</p>
+
+            <p><i class="fa-solid fa-location-dot"></i> Accra, Ghana</p>
+
+        </div>
+
+        <div class="footer-box">
+
+            <h3>Quick Links</h3>
+
+            <a href="index.html">Home</a>
+            <a href="pages/about.html">About</a>
+            <a href="pages/contact.html">Products</a>
+            <a href="pages/login.html">Login</a>
+
+        </div>
+
+
+        
 
     </div>
 

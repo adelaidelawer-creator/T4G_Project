@@ -28,13 +28,20 @@
 
 <body>
 
+    <div class="whatsapp-float">
+        <div class="whatsapp-tooltip">Chat on WhatsApp: +233 257 008 392</div>
+        <a href="https://wa.me/233257008392" target="_blank" rel="noopener noreferrer" class="whatsapp-pill" aria-label="Contact AL Luxe on WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+    </div>
+
     <!-- ================= HEADER ================= -->
 
     <header>
 
         <div class="logo">
 
-            <h2>AL Luxe</h2>
+            <img src="../images/white logo.png" alt="AL Luxe Logo">
 
         </div>
 
@@ -46,18 +53,22 @@
 
                 <li><a href="about.html">About</a></li>
 
-
-                <li><a href="services.html">Services</a></li>
+                <li><a href="collections.html">Collections</a></li>
 
                 <li><a href="contact.html">Contact</a></li>
 
-                <li><a href="login.html">Login</a></li>
+                <li>
+                    <a href="cart.html" class="cart-icon active">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="cart-count">2</span>
+                    </a>
+                </li>
 
-                <li><a href="signup.html">Sign Up</a></li>
+                <li><a href="login.html">Login</a></li>
 
                  <li>
 
-                <a href="#">
+                <a href="wishlist.html">
 
                     <i class="fa-regular fa-heart"></i>
 
@@ -67,7 +78,7 @@
 
             <li>
 
-                <a href="#">
+                <a href="search.html">
 
                     <i class="fa-solid fa-magnifying-glass"></i>
 
@@ -144,7 +155,9 @@
 
     <section class="cart-section">
 
-        <div class="cart-items">
+        <div class="cart-layout">
+
+            <div class="cart-items">
 
             <!-- PRODUCT 1 -->
 
@@ -273,6 +286,79 @@
 
         </div>
 
+
+            <section class="cart-summary">
+
+                <div class="summary-card">
+
+                    <h2>Order Summary</h2>
+
+                    <hr>
+
+                    <p>
+
+                        <span>Subtotal</span>
+
+                        <span>GH₵4,300</span>
+
+                    </p>
+
+                    <p>
+
+                        <span>Delivery</span>
+
+                        <span>GH₵50</span>
+
+                    </p>
+
+                    <p>
+
+                        <span>Discount</span>
+
+                        <span>GH₵0</span>
+
+                    </p>
+
+                    <hr>
+
+                    <h3>
+
+                        <span>Total</span>
+
+                        <span>GH₵4,350</span>
+
+                    </h3>
+
+                    <div class="payment-icons">
+
+                        <h4>Accepted Payments</h4>
+
+                        <div>
+
+                            <i class="fa-brands fa-cc-visa"></i>
+
+                            <i class="fa-brands fa-cc-mastercard"></i>
+
+                            <i class="fa-brands fa-cc-paypal"></i>
+
+                            <i class="fa-solid fa-mobile-screen"></i>
+
+                        </div>
+
+                    </div>
+
+                    <a href="#" class="btn checkout-btn">
+
+                        Proceed to Checkout
+
+                    </a>
+
+                </div>
+
+            </section>
+
+        </div>
+
     </section>
 
     <!-- ================= COUPON ================= -->
@@ -307,7 +393,7 @@
 
             <div class="card">
 
-                <img src="images/bangle.jpg" alt="Luxury Bangle">
+                <img src="../images/bangle.jpg" alt="Luxury Bangle">
 
                 <h3>Luxury Bangle</h3>
 
@@ -323,7 +409,7 @@
 
             <div class="card">
 
-                <img src="images/watch.jpg" alt="Gold Watch">
+                <img src="../images/watch.jpg" alt="Gold Watch">
 
                 <h3>Gold Watch</h3>
 
@@ -339,7 +425,7 @@
 
             <div class="card">
 
-                <img src="images/earrings.jpg" alt="Diamond Earrings">
+                <img src="../images/earrings.jpg" alt="Diamond Earrings">
 
                 <h3>Diamond Earrings</h3>
 
@@ -356,148 +442,6 @@
         </div>
 
     </section>
-
-    <!-- ================= ORDER SUMMARY ================= -->
-
-    <section class="cart-summary">
-
-        <div class="summary-card">
-
-            <h2>Order Summary</h2>
-
-            <hr>
-
-            <p>
-
-                <span>Subtotal</span>
-
-                <span>GH₵4,300</span>
-
-            </p>
-
-            <p>
-
-                <span>Delivery</span>
-
-                <span>GH₵50</span>
-
-            </p>
-
-            <p>
-
-                <span>Discount</span>
-
-                <span>GH₵0</span>
-
-            </p>
-
-            <hr>
-
-            <h3>
-
-                <span>Total</span>
-
-                <span>GH₵4,350</span>
-
-            </h3>
-
-            <div class="payment-icons">
-
-                <h4>Accepted Payments</h4>
-
-                <div>
-
-                    <i class="fa-brands fa-cc-visa"></i>
-
-                    <i class="fa-brands fa-cc-mastercard"></i>
-
-                    <i class="fa-brands fa-cc-paypal"></i>
-
-                    <i class="fa-solid fa-mobile-screen"></i>
-
-                </div>
-
-            </div>
-
-            <a href="#" class="btn checkout-btn">
-
-                Proceed to Checkout
-
-            </a>
-
-        </div>
-
-    </section>
-
-    <!-- ================= FOOTER ================= -->
-
-    <footer>
-
-        <div class="footer-container">
-
-            <div class="footer-box">
-
-                <h3>AL Luxe</h3>
-
-                <p>
-
-                    Luxury jewelry designed to celebrate your elegance every day.
-
-                </p>
-
-            </div>
-
-            <div class="footer-box">
-
-                <h3>Quick Links</h3>
-
-                <a href="../index.html">Home</a>
-
-                <a href="about.html">About</a>
-
-                <a href="products.html">Products</a>
-
-                <a href="services.html">Services</a>
-
-            </div>
-
-            <div class="footer-box">
-
-                <h3>Contact Us</h3>
-
-                <p><i class="fa-solid fa-phone"></i> +233 55 123 4567</p>
-
-                <p><i class="fa-solid fa-envelope"></i> info@alluxe.com</p>
-
-                <p><i class="fa-solid fa-location-dot"></i> Accra, Ghana</p>
-
-            </div>
-
-            <div class="footer-box">
-
-                <h3>Follow Us</h3>
-
-                <a href="#"><i class="fa-brands fa-facebook"></i></a>
-
-                <a href="#"><i class="fa-brands fa-instagram"></i></a>
-
-                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-
-                <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
-
-            </div>
-
-        </div>
-
-        <hr>
-
-        <p class="copyright">
-
-            © 2026 AL Luxe. All Rights Reserved.
-
-        </p>
-
-    </footer>
 
 </body>
 
