@@ -2,6 +2,9 @@
    GOOGLE FONT & RESET
 ========================== */
 
+
+
+
 *{
     margin:0;
     padding:0;
@@ -105,11 +108,8 @@ img{
     object-fit:cover;
 }
 
-.price{
-    color:#d4af37;
-    font-weight:700;
-    margin-top:10px;
-}
+
+
 
 /* ==========================
    RESPONSIVE LAYOUTS
@@ -2211,3 +2211,5 @@ nav ul li a.active{
     background:#d4af37;
     color:#fff;
 }
+
+
