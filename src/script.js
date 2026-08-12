@@ -19,77 +19,77 @@ const products = {
     "flower-drop": {
         name: "Flower Drop Necklace",
         price: 150,
-        image: "../images/Golden Flower Drop Necklace ✨.jpg",
+        image: "../images/Flower Drop Necklace.jpg",
         description: "A beautiful flower-inspired necklace that combines feminine charm with an elegant golden finish."
     },
 
     lola: {
         name: "Lola Necklace",
         price: 150,
-        image: "../images/Flower Necklace Enamel Pendants Dainty Flower Necklace - Etsy.jpg",
+        image: "../images/Lola Necklace.jpg",
         description: "A delicate floral necklace selected for its effortless beauty and sophisticated everyday appeal."
     },
 
     "crystal-bow": {
         name: "Crystal Bow Necklace",
         price: 150,
-        image: "../images/crystal bow.jpg",
+        image: "../images/Crystal Bow Necklace.jpg",
         description: "A graceful crystal bow necklace that adds sparkle and refined elegance to any outfit."
     },
 
     "gold-bow": {
         name: "Gold Bow Necklace",
         price: 150,
-        image: "../images/gold bow.jpg",
+        image: "../images/Gold Bow Necklace.jpg",
         description: "A timeless gold bow design created for a polished and effortlessly elegant appearance."
     },
 
     heart: {
         name: "Heart Necklace",
         price: 150,
-        image: "../images/full heart.jpg",
+        image: "../images/Heart Necklace.jpg",
         description: "A charming heart necklace that brings a romantic and timeless touch to your jewellery collection."
     },
 
     crescent: {
         name: "Crescent Necklace",
         price: 150,
-        image: ">./images/crescent necklace.jpg",
+        image: "../images/Crescent Necklace.jpg",
         description: "A sophisticated crescent-inspired necklace designed for understated elegance."
     },
 
     "open-pearl": {
         name: "Open Pearl Necklace",
         price: 150,
-        image: "../images/open pearl.jpg",
+        image: "../images/Open Pearl Necklace.jpg",
         description: "A refined pearl-inspired piece that blends classic beauty with a modern silhouette."
     },
 
     "pearl-luxe": {
         name: "Pearl Luxe Necklace",
         price: 150,
-        image: "../images/pearl luxe.jpg",
+        image: "../images/Pearl Luxe Necklace.jpg",
         description: "An elegant pearl necklace that adds timeless sophistication to both everyday and occasion styling."
     },
 
     sunshine: {
         name: "Sunshine Necklace",
         price: 150,
-        image: "../images/sunshine necklace.jpg",
+        image: "../images/Sunshine Necklace.jpg",
         description: "A radiant necklace inspired by sunshine, designed to bring warmth and elegance to your look."
     },
 
     charm: {
         name: "Charm Necklace",
         price: 150,
-        image: "../images/Hibiscus Charm Necklace.jpg",
+        image: "../images/Charm Necklace.jpg",
         description: "A beautiful charm necklace with a delicate floral-inspired design and timeless appeal."
     },
 
     bloom: {
         name: "Bloom Necklace",
         price: 150,
-        image: "../images/Pin by 𝐋𝐚𝐟𝐞𝐞♡.jpg",
+        image: "../images/Bloom Necklace.jpg",
         description: "A graceful bloom-inspired necklace that adds a soft and feminine finishing touch."
     },
 
@@ -444,6 +444,25 @@ const productId = urlParams.get("product");
 const product = products[productId];
 
 
+/* =========================================
+BACK TO COLLECTION
+========================================= */
+
+const backToCollection = document.getElementById("backToCollection");
+
+if (backToCollection) {
+
+    backToCollection.addEventListener("click", function(event) {
+
+        event.preventDefault();
+
+        window.history.back();
+
+    });
+
+}
+
+
 
 
 /* =========================================
@@ -641,3 +660,387 @@ if (wishlistBtn) {
     });
 
 }
+
+/* =========================================
+   AL LUXE CART SYSTEM
+========================================= */
+
+const cartItemsContainer = document.getElementById("cartItems");
+const cartSubtotal = document.getElementById("cartSubtotal");
+const cartTotal = document.getElementById("cartTotal");
+
+
+/* =========================================
+   DISPLAY CART
+========================================= */
+
+function displayCart() {
+
+    if (!cartItemsContainer) {
+        return;
+    }
+
+
+    let cart =
+        JSON.parse(localStorage.getItem("alLuxeCart")) || [];
+
+
+    /* EMPTY CART */
+
+    if (cart.length === 0) {
+
+        cartItemsContainer.innerHTML = `
+
+            <div class="empty-cart">
+
+                <i class="fa-solid fa-bag-shopping"></i>
+
+                <h2>Your shopping bag is empty</h2>
+
+                <p>
+                    Discover something beautiful from our collections.
+                </p>
+
+                <a href="collections.html">
+                    Explore Collections
+                </a>
+
+            </div>
+
+        `;
+
+
+        if (cartSubtotal) {
+            cartSubtotal.textContent = "GH₵0.00";
+        }
+
+
+        if (cartTotal) {
+            cartTotal.textContent = "GH₵0.00";
+        }
+
+
+        return;
+    }
+
+
+    /* CLEAR CART */
+
+    cartItemsContainer.innerHTML = "";
+
+
+    let subtotal = 0;
+
+
+    /* DISPLAY PRODUCTS */
+
+    cart.forEach(function(item, index) {
+
+        const itemTotal =
+            item.price * item.quantity;
+
+
+        subtotal += itemTotal;
+
+
+        const cartItem =
+            document.createElement("div");
+
+
+        cartItem.className = "cart-item";
+
+
+        cartItem.innerHTML = `
+
+            <!-- PRODUCT -->
+
+            <div class="cart-product">
+
+                <img
+                    src="${item.image}"
+                    alt="${item.name}"
+                    class="cart-item-image"
+                >
+
+                <div class="cart-product-info">
+
+                    <h3>
+                        ${item.name}
+                    </h3>
+
+                    <button
+                        type="button"
+                        class="product-details-btn"
+                        data-id="${item.id}">
+
+                        Product Details
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRICE -->
+
+            <div class="cart-price">
+
+                GH₵${item.price.toFixed(2)}
+
+            </div>
+
+
+            <!-- QUANTITY -->
+
+            <div class="cart-quantity">
+
+                <button
+                    type="button"
+                    class="cart-decrease"
+                    data-index="${index}">
+
+                    −
+
+                </button>
+
+
+                <span>
+                    ${item.quantity}
+                </span>
+
+
+                <button
+                    type="button"
+                    class="cart-increase"
+                    data-index="${index}">
+
+                    +
+
+                </button>
+
+            </div>
+
+
+            <!-- TOTAL -->
+
+            <div class="cart-item-total">
+
+                <strong>
+                    GH₵${itemTotal.toFixed(2)}
+                </strong>
+
+                <button
+                    type="button"
+                    class="remove-item"
+                    data-index="${index}">
+
+                    Remove
+
+                </button>
+
+            </div>
+
+        `;
+
+
+        cartItemsContainer.appendChild(cartItem);
+
+    });
+
+
+    /* UPDATE TOTALS */
+
+    if (cartSubtotal) {
+
+        cartSubtotal.textContent =
+            `GH₵${subtotal.toFixed(2)}`;
+
+    }
+
+
+    if (cartTotal) {
+
+        cartTotal.textContent =
+            `GH₵${subtotal.toFixed(2)}`;
+
+    }
+
+
+    addCartControls();
+
+}
+
+
+
+/* =========================================
+   CART CONTROLS
+========================================= */
+
+function addCartControls() {
+
+
+    /* INCREASE */
+
+    document.querySelectorAll(".cart-increase")
+        .forEach(function(button) {
+
+            button.addEventListener("click", function() {
+
+                const index =
+                    Number(button.dataset.index);
+
+
+                let cart =
+                    JSON.parse(localStorage.getItem("alLuxeCart")) || [];
+
+
+                cart[index].quantity++;
+
+
+                localStorage.setItem(
+                    "alLuxeCart",
+                    JSON.stringify(cart)
+                );
+
+
+                displayCart();
+
+            });
+
+        });
+
+
+
+    /* DECREASE */
+
+    document.querySelectorAll(".cart-decrease")
+        .forEach(function(button) {
+
+            button.addEventListener("click", function() {
+
+                const index =
+                    Number(button.dataset.index);
+
+
+                let cart =
+                    JSON.parse(localStorage.getItem("alLuxeCart")) || [];
+
+
+                if (cart[index].quantity > 1) {
+
+                    cart[index].quantity--;
+
+                } else {
+
+                    cart.splice(index, 1);
+
+                }
+
+
+                localStorage.setItem(
+                    "alLuxeCart",
+                    JSON.stringify(cart)
+                );
+
+
+                displayCart();
+
+            });
+
+        });
+
+
+
+    /* REMOVE */
+
+    document.querySelectorAll(".remove-item")
+        .forEach(function(button) {
+
+            button.addEventListener("click", function() {
+
+                const index =
+                    Number(button.dataset.index);
+
+
+                let cart =
+                    JSON.parse(localStorage.getItem("alLuxeCart")) || [];
+
+
+                cart.splice(index, 1);
+
+
+                localStorage.setItem(
+                    "alLuxeCart",
+                    JSON.stringify(cart)
+                );
+
+
+                displayCart();
+
+            });
+
+        });
+
+
+
+    /* PRODUCT DETAILS */
+
+    document.querySelectorAll(".product-details-btn")
+        .forEach(function(button) {
+
+            button.addEventListener("click", function() {
+
+                const productId =
+                    button.dataset.id;
+
+
+                window.location.href =
+                    `product.details.html?product=${productId}`;
+
+            });
+
+        });
+
+}
+
+
+
+/* =========================================
+   CHECKOUT
+========================================= */
+
+const checkoutBtn =
+    document.getElementById("checkoutBtn");
+
+
+if (checkoutBtn) {
+
+    checkoutBtn.addEventListener("click", function() {
+
+        let cart =
+            JSON.parse(localStorage.getItem("alLuxeCart")) || [];
+
+
+        if (cart.length === 0) {
+
+            alert("Your shopping bag is empty.");
+
+            return;
+
+        }
+
+
+        alert("Checkout page coming soon.");
+
+    });
+
+}
+
+
+
+/* =========================================
+   LOAD CART
+========================================= */
+
+displayCart();
