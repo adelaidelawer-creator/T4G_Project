@@ -1023,7 +1023,7 @@ if (checkoutBtn) {
 
         if (cart.length === 0) {
 
-            alert("Your shopping bag is empty.");
+            showNotification("Your shopping bag is empty.");
 
             return;
 
