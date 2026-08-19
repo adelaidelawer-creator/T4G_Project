@@ -599,7 +599,7 @@ if (addCartBtn) {
         );
 
 
-        alert(`${product.name} has been added to your cart.`);
+        showNotification(`${product.name} has been added to your cart.`);
 
     });
 
@@ -632,7 +632,7 @@ if (wishlistBtn) {
 
         if (alreadySaved) {
 
-            alert(`${product.name} is already in your wishlist.`);
+            showNotification(`${product.name} is already in your wishlist.`);
 
             return;
 
@@ -658,7 +658,7 @@ if (wishlistBtn) {
         );
 
 
-        alert(`${product.name} has been added to your wishlist.`);
+        showNotification(`${product.name} has been added to your wishlist.`);
 
     });
 
@@ -1623,13 +1623,6 @@ function displayWishlist() {
 
             <div class="wishlist-actions">
 
-                <a
-                    href="product.details.html?product=${item.id}"
-                    class="card-btn">
-
-                    View Details
-
-                </a>
 
 
                 <button
@@ -1873,3 +1866,59 @@ function updateWishlistCartCount() {
 displayWishlist();
 
 updateWishlistCartCount();
+
+function showNotification(message) {
+    const notification = document.createElement("div");
+
+    notification.className = "al-notification";
+
+    notification.innerHTML = `
+        <i class="fa-solid fa-check"></i>
+        <span>${message}</span>
+    `;
+
+    document.body.appendChild(notification);
+
+    setTimeout(() => {
+        notification.classList.add("show");
+    }, 10);
+
+    setTimeout(() => {
+        notification.classList.remove("show");
+
+        setTimeout(() => {
+            notification.remove();
+        }, 400);
+    }, 2500);
+}
+
+/* =========================================
+   AL LUXE NEWSLETTER SUBSCRIPTION
+========================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const newsletterForm = document.getElementById("newsletterForm");
+
+    if (!newsletterForm) {
+        return;
+    }
+
+    newsletterForm.addEventListener("submit", function (event) {
+
+        event.preventDefault();
+
+        const emailInput = document.getElementById("newsletterEmail");
+
+        if (!emailInput.checkValidity()) {
+            emailInput.reportValidity();
+            return;
+        }
+
+        showNotification("Thank you for subscribing to AL Luxe!");
+
+        emailInput.value = "";
+
+    });
+
+});
