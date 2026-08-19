@@ -4,109 +4,163 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Earrings | AL LUXE</title>
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
     <link rel="stylesheet" href="../src/style.css">
-    <link rel="stylesheet" href="../src/category-pages.css">
+
 </head>
-<body class="category-page">
+
+<body>
+    <div class="whatsapp-float">
+     <div class="whatsapp-tooltip">Chat on WhatsApp: +233 257 008 392</div>
+     <a href="https://wa.me/233257008392" target="_blank" rel="noopener noreferrer" class="whatsapp-pill" aria-label="Contact AL Luxe on WhatsApp">
+     <i class="fa-brands fa-whatsapp"></i>
+     </a>
+   </div>
+
+<!-- ================= HEADER ================= -->
+
     <header>
         <div class="logo">
             <img src="../images/white logo.png" alt="AL Luxe Logo">
         </div>
         <nav>
             <ul>
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="collections.html">Collections</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
-            </ul>
-        </nav>
+
+              <li><a href="../index.html" >Home</a></li>
+
+              <li><a href="about.html">About</a></li>
+
+              <li><a href="collections.html" class="active">Collections</a></li>
+
+              <li><a href="contact.html">Contact</a></li>
+
+              <li><a href="login.html">Login</a></li>
+
+              <li>
+                <a href="wishlist.html">
+                <i class="fa-regular fa-heart"></i>
+                </a>
+              </li>
+
+              <li>
+                <a href="search.html">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                </a>
+              </li>
+
+              <li>
+               <a href="cart.html" class="cart-icon">
+               <i class="fa-solid fa-cart-shopping"></i>
+               </a>
+              </li>
+
+          </ul>
+
+       </nav>
+
     </header>
 
+<!-- ================= HERO ================= -->
+
     <section class="hero">
-        <h1>Earrings Collection</h1>
-        <p>Delicate and bold earrings that frame your style with sparkle, movement, and a refined finish.</p>
+      <div class="hero-text">
+         <h1>Earrings Collection</h1>
+         <p>
+            Delicate and bold earrings that frame your style with sparkle, movement, and a refined finish.
+         </p>
+      </div>
     </section>
 
-    <section class="collection-grid">
-        
-<div class="card">
-    <img src="../images/Autumn Earrings.jpg" alt="Earring Pair">
-    <h3>Autumn Earrings</h3>
-    <a href="product.details.html?product=autumn-earrings&col" class="btn">View Details</a>
-</div>
+    <!-- Products -->
 
-<div class="card">
-    <img src="../images/Esoteric earrings.jpg" alt="Earring Pair">
-    <h3>Esoteric Earrings</h3>
-    <a href="product.details.html?product=esoteric-earrings" class="btn">View Details</a>
-</div>
+    <section class="products">
 
-<div class="card">
-    <img src="../images/Luxe Earrings.jpg" alt="Earring Pair">
-    <h3>Luxe Earrings</h3>
-    <a href="product.details.html?product=luxe-earrings" class="btn">View Details</a>
-</div>
+       <div class="cards"> 
 
-<div class="card">
-    <img src="../images/Pearl Stud Earrings.jpg" alt="Earring Pair">
-    <h3>Pearl Stud Earrings</h3>
-    <a href="product.details.html?product=pearl-stud-earrings" class="btn">View Details</a>
-</div>
+         <div class="card">
+             <img src="../images/Autumn Earrings.jpg" alt="Earring Pair">
+             <h3>Autumn Earrings</h3>
+             <a href="product.details.html?product=autumn-earrings&col" class="card-btn">View Details</a>
+         </div>
 
-<div class="card">
-    <img src="../images/Bloom Earrings.jpg" alt="Earring Pair">
-    <h3>Bloom Earrings</h3>
-    <a href="product.details.html?product=bloom-earrings" class="btn">View Details</a>
-</div>
+         <div class="card">
+             <img src="../images/Esoteric earrings.jpg" alt="Earring Pair">
+             <h3>Esoteric Earrings</h3>
+             <a href="product.details.html?product=esoteric-earrings" class="card-btn">View Details</a>
+         </div>
 
-<div class="card">
-    <img src="../images/Jade Earrings.jpg" alt="Earring Pair">
-    <h3>Jade Earrings</h3>
-    <a href="product.details.html?product=jade-earrings" class="btn">View Details</a>
-</div>
+         <div class="card">
+             <img src="../images/Luxe Earrings.jpg" alt="Earring Pair">
+             <h3>Luxe Earrings</h3>
+             <a href="product.details.html?product=luxe-earrings" class="card-btn">View Details</a>
+         </div>
 
-<div class="card">
-    <img src="../images/Golden Drop Earrings.jpg" alt="Earring Pair">
-    <h3>Golden Drop Earrings</h3>
-    <a href="product.details.html?product=golden-drop-earrings" class="btn">View Details</a>
-</div>
+         <div class="card">
+             <img src="../images/Pearl Stud Earrings.jpg" alt="Earring Pair">
+             <h3>Pearl Stud Earrings</h3>
+             <a href="product.details.html?product=pearl-stud-earrings" class="card-btn">View Details</a>
+         </div>
 
-<div class="card">
-    <img src="../images/Aura Earrings.jpg" alt="Earring Pair">
-    <h3>Aura Earrings</h3>
-    <a href="product.details.html?product=aura-earrings" class="btn">View Details</a>
-</div>
+         <div class="card">
+             <img src="../images/Bloom Earrings.jpg" alt="Earring Pair">
+             <h3>Bloom Earrings</h3>
+             <a href="product.details.html?product=bloom-earrings" class="card-btn">View Details</a>
+         </div>
 
-<div class="card">
-    <img src="../images/AL Luxe Earrings.jpg" alt="Earring Pair">
-    <h3>AL Luxe Earrings</h3>
-    <a href="product.details.html?product=al-luxe-earrings" class="btn">View Details</a>
-</div>
+         <div class="card">
+             <img src="../images/Jade Earrings.jpg" alt="Earring Pair">
+             <h3>Jade Earrings</h3>
+             <a href="product.details.html?product=jade-earrings" class="card-btn">View Details</a>
+         </div>
 
-<div class="card">
-    <img src="../images/Tear Drop Earrings.jpg" alt="Earring Pair">
-    <h3>Tear Drop Earrings</h3>
-    <a href="product.details.html?product=tear-drop-earrings" class="btn">View Details</a>
-</div>
+         <div class="card">
+             <img src="../images/Golden Drop Earrings.jpg" alt="Earring Pair">
+             <h3>Golden Drop Earrings</h3>
+             <a href="product.details.html?product=golden-drop-earrings" class="card-btn">View Details</a>
+         </div>
 
-<div class="card">
-    <img src="../images/Floral Stud Earrings.jpg" alt="Earring Pair">
-    <h3>Floral Stud Earrings</h3>
-    <a href="product.details.html?product=floral-stud-earrings" class="btn">View Details</a>
-</div>
+         <div class="card">
+             <img src="../images/Aura Earrings.jpg" alt="Earring Pair">
+             <h3>Aura Earrings</h3>
+             <a href="product.details.html?product=aura-earrings" class="card-btn">View Details</a>
+         </div>
 
-<div class="card">
-    <img src="../images/Knocker Earrings.jpg" alt="Earring Pair">
-    <h3>Knocker Earrings</h3>
-    <a href="product.details.html?product=knocker-earrings" class="btn">View Details</a>
-</div>
+         <div class="card">
+             <img src="../images/AL Luxe Earrings.jpg" alt="Earring Pair">
+             <h3>AL Luxe Earrings</h3>
+             <a href="product.details.html?product=al-luxe-earrings" class="card-btn">View Details</a>
+         </div>
+
+         <div class="card">
+             <img src="../images/Tear Drop Earrings.jpg" alt="Earring Pair">
+             <h3>Tear Drop Earrings</h3>
+             <a href="product.details.html?product=tear-drop-earrings" class="card-btn">View Details</a>
+         </div>
+
+         <div class="card">
+             <img src="../images/Floral Stud Earrings.jpg" alt="Earring Pair">
+             <h3>Floral Stud Earrings</h3>
+             <a href="product.details.html?product=floral-stud-earrings" class="card-btn">View Details</a>
+         </div>
+
+         <div class="card">
+             <img src="../images/Knocker Earrings.jpg" alt="Earring Pair">
+             <h3>Knocker Earrings</h3>
+             <a href="product.details.html?product=knocker-earrings" class="card-btn">View Details</a>
+         </div>
+
+       </div>
 
     </section>
+
 </body>
 </html>

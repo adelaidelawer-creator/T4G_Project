@@ -4,112 +4,162 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Necklaces | AL LUXE</title>
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
     <link rel="stylesheet" href="../src/style.css">
-    <link rel="stylesheet" href="../src/category-pages.css">
+    
 </head>
-<body class="category-page">
+
+<body>
+
+    <div class="whatsapp-float">
+     <div class="whatsapp-tooltip">Chat on WhatsApp: +233 257 008 392</div>
+     <a href="https://wa.me/233257008392" target="_blank" rel="noopener noreferrer" class="whatsapp-pill" aria-label="Contact AL Luxe on WhatsApp">
+     <i class="fa-brands fa-whatsapp"></i>
+     </a>
+   </div>
+
+<!-- ================= HEADER ================= -->
+
     <header>
         <div class="logo">
             <img src="../images/white logo.png" alt="AL Luxe Logo">
         </div>
         <nav>
             
-            <ul>
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="collections.html">Collections</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
-            </ul>
+          <ul>
+
+              <li><a href="../index.html" >Home</a></li>
+
+              <li><a href="about.html">About</a></li>
+
+              <li><a href="collections.html" class="active">Collections</a></li>
+
+              <li><a href="contact.html">Contact</a></li>
+
+              <li><a href="login.html">Login</a></li>
+
+              <li>
+                <a href="wishlist.html">
+                <i class="fa-regular fa-heart"></i>
+                </a>
+              </li>
+
+              <li>
+                <a href="search.html">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                </a>
+              </li>
+
+              <li>
+               <a href="cart.html" class="cart-icon">
+               <i class="fa-solid fa-cart-shopping"></i>
+               </a>
+              </li>
+
+          </ul>
+  
         </nav>
+
     </header>
 
+    <!-- ================= HERO ================= -->
+
     <section class="hero">
-        <h1>Necklaces Collection</h1>
-        <p>Graceful necklaces that layer timeless shine with confident, elevated styling.</p>
+     <div class="hero-text">
+         <h1>Necklaces Collection</h1>
+         <p>Graceful necklaces that layer timeless shine with confident, elevated styling.</p>
+     </div>
     </section>
 
-    <section class="collection-grid">
+    <!-- Products -->
 
+    <section class="products">
+     |<div class="cards"> 
         <div class="card">
             <img src="../images/Petal Necklace.jpg" alt="Diamond Necklace">
             <h3>Petal Necklace</h3>
-            <a href="product.details.html?product=petal" class="btn">View Details</a>
+            <a href="product.details.html?product=petal" class="card-btn">View Details</a>
         </div>
 
         <div class="card">
             <img src="../images/Flower Drop Necklace.jpg" alt="Diamond Necklace">
             <h3>Flower Drop Necklace</h3>
-            <a href="product.details.html?product=flower-drop" class="btn">View Details</a>
+            <a href="product.details.html?product=flower-drop" class="card-btn">View Details</a>
         </div>
 
         <div class="card">
             <img src="../images/Lola Necklace.jpg" alt="Diamond Necklace">
             <h3>Lola Necklace</h3>
-            <a href="product.details.html?product=lola" class="btn">View Details</a>
+            <a href="product.details.html?product=lola" class="card-btn">View Details</a>
         </div>
 
         <div class="card">
             <img src="../images/Crystal Bow necklace.jpg" alt="Necklace">
             <h3>Crystal Bow Necklace</h3>
-            <a href="product.details.html?product=crystal-bow" class="btn">View Details</a>
+            <a href="product.details.html?product=crystal-bow" class="card-btn">View Details</a>
         </div>
 
         <div class="card">
             <img src="../images/Gold Bow Necklace.jpg" alt="Necklace">
             <h3>Gold Bow Necklace</h3>
-            <a href="product.details.html?product=gold-bow" class="btn">View Details</a>
+            <a href="product.details.html?product=gold-bow" class="card-btn">View Details</a>
         </div>
 
         <div class="card">
             <img src="../images/Heart Necklace.jpg" alt="Necklace">
             <h3>Heart Necklace</h3>
-            <a href="product.details.html?product=Heart Necklace" class="btn">View Details</a>
+            <a href="product.details.html?product=Heart Necklace" class="card-btn">View Details</a>
         </div>
 
         <div class="card">
             <img src="../images/Crescent Necklace.jpg" alt="Necklace">
             <h3>Crescent Necklace</h3>
-            <a href="product.details.html?product=crescent" class="btn">View Details</a>
-            
-</a>
+            <a href="product.details.html?product=crescent" class="card-btn">View Details</a></a>
         </div>
 
         <div class="card">
             <img src="../images/Open Pearl Necklace.jpg" alt="Necklace">
             <h3>Open Pearl Necklace</h3>
-            <a href="product.details.html?product=open-pearl" class="btn">View Details</a>
+            <a href="product.details.html?product=open-pearl" class="card-btn">View Details</a>
         </div>
 
         <div class="card">
             <img src="../images/Pearl Luxe Necklace.jpg" alt=" Necklace">
             <h3>Pearl Luxe Necklace</h3>
-            <a href="product.details.html?product=pearl-luxe" class="btn">View Details</a>
+            <a href="product.details.html?product=pearl-luxe" class="card-btn">View Details</a>
         </div>
 
         <div class="card">
             <img src="../images/Sunshine Necklace.jpg" alt=" Necklace">
             <h3>Sunshine Necklace</h3>
-            <a href="product.details.html?product=sunshine" class="btn">View Details</a>
+            <a href="product.details.html?product=sunshine" class="card-btn">View Details</a>
         </div>
 
         <div class="card">
             <img src="../images/Charm Necklace.jpg" alt="Necklace">
             <h3>Charm Necklace</h3>
-            <a href="product.details.html?product=charm" class="btn">View Details</a>
+            <a href="product.details.html?product=charm" class="card-btn">View Details</a>
         </div>
 
         <div class="card">
             <img src="../images/Bloom Necklace.jpg" alt="Necklace">
             <h3>Bloom Necklace</h3>
-            <a href="product.details.html?product=bloom" class="btn">View Details</a>
+            <a href="product.details.html?product=bloom" class="card-btn">View Details</a>
         </div>
 
+     |</div>
+
     </section>
+
 </body>
+
 </html>

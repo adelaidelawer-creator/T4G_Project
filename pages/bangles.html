@@ -4,111 +4,171 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bangles | AL LUXE</title>
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
     <link rel="stylesheet" href="../src/style.css">
-    <link rel="stylesheet" href="../src/category-pages.css">
+   
 </head>
-<body class="category-page">
+
+<body>
+
+   <div class="whatsapp-float">
+    <div class="whatsapp-tooltip">Chat on WhatsApp: +233 257 008 392</div>
+    <a href="https://wa.me/233257008392" target="_blank" rel="noopener noreferrer" class="whatsapp-pill" aria-label="Contact AL Luxe on WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+    </a>
+   </div>
+ 
+   <!-- ================= HEADER ================= -->
+
     <header>
         <div class="logo">
             <img src="../images/white logo.png" alt="AL Luxe Logo">
         </div>
         <nav>
             <ul>
-                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html" >Home</a></li>
+
                 <li><a href="about.html">About</a></li>
-                <li><a href="collections.html">Collections</a></li>
+
+                <li><a href="collections.html" class="active">Collections</a></li>
+
                 <li><a href="contact.html">Contact</a></li>
+
                 <li><a href="login.html">Login</a></li>
-                <li><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+
+                <li>
+                    <a href="wishlist.html">
+                        <i class="fa-regular fa-heart"></i>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="search.html">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="cart.html" class="cart-icon">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </a>
+                </li>
+
             </ul>
+            
         </nav>
+
     </header>
 
+    <!-- ================= HERO ================= -->
+
     <section class="hero">
+
+        <div class="hero-text">
         <h1>Bangles Collection</h1>
-        <p>Stylish bangles crafted for bright, polished looks that turn every outfit into a statement.</p>
+        <p>
+            Stylish bangles crafted for bright, polished looks that turn every outfit into a statement.
+        </p>
+    </div>
     </section>
 
-    <section class="collection-grid">
-        <div class="card">
+    <!-- Products -->
+
+    <section class="products">
+        <div class="cards">
+
+         <div class="card">
             <img src="../images/Gold Butterfly Bangle.jpg" alt="Gold Bangle">
             <h3>Gold Butterfly Bangle</h3>
             <!-- <p class="price">GH₵150.00</p> -->
-            <a href="product.details.html?product=gold-butterfly-bangle" class="btn">View Details</a>
-        </div>
+            <a href="product.details.html?product=gold-butterfly-bangle" class="card-btn">View Details</a>
+          </div>
 
-        <div class="card">
+         <div class="card">
             <img src="../images/African Luxe Bangle.jpg" alt="African Bangle">
             <h3>African Luxe Bangle</h3>
             <!-- <p class="price">GH₵150.00</p> -->
-            <a href="product.details.html?product=african-luxe-bangle" class="btn">View Details</a>
+            <a href="product.details.html?product=african-luxe-bangle" class="card-btn">View Details</a>
             
-        </div>
+         </div>
         <div class="card">
             <img src="../images/Aura Bangle.jpg" alt="Classic Bangle Set">
             <h3>Aura Bangle</h3>
             <!-- <p class="price">GH₵200.00</p> -->
-            <a href="product.details.html?product=aura-bangle" class="btn">View Details</a>
+            <a href="product.details.html?product=aura-bangle" class="card-btn">View Details</a>
         </div>
         <div class="card">
             <img src="../images/Charm bangle Set.jpg" alt="Charm Bangle">
             <h3>Charm Bangle Set</h3>
             <!-- <p class="price">GH₵200.00</p> -->
-            <a href="product.details.html?product=charm-bangle-set" class="btn">View Details</a>
+            <a href="product.details.html?product=charm-bangle-set" class="card-btn">View Details</a>
            
         </div>
         <div class="card">
             <img src="../images/Sophie Bangle.jpg" alt="Rose Bangle">
             <h3>Sophie Bangle</h3>
             <!-- <p class="price">GH₵150.00</p> -->
-            <a href="product.details.html?product=sophie-bangle" class="btn">View Details</a>
+            <a href="product.details.html?product=sophie-bangle" class="card-btn">View Details</a>
             
         </div>
         <div class="card">
             <img src="../images/Lola Bangle.jpg" alt="Silver Bangle">
             <h3>Lola Bangle</h3>
             <!-- <p class="price">GH₵150.00</p> -->
-            <a href="product.details.html?product=lola-bangle" class="btn">View Details</a>
+            <a href="product.details.html?product=lola-bangle" class="card-btn">View Details</a>
         </div>
+
         <div class="card">
             <img src="../images/Royal Vine Pearl.jpg" alt="Royal Bangle">
             <h3>Royal Vine Pearl</h3>
             <!-- <p class="price">GH₵250.00</p> -->
-            <a href="product.details.html?product=royal-vine-pearl" class="btn">View Details</a>
+            <a href="product.details.html?product=royal-vine-pearl" class="zcard-btn">View Details</a>
         </div>
+
         <div class="card">
             <img src="../images/Asian Luxe Bangle.jpg" alt="Modern Bangle">
             <h3>Asian Luxe Bangle</h3>
             <!-- <p class="price">GH₵250.00</p> -->
-            <a href="product.details.html?product=asian-luxe-bangle" class="btn">View Details</a>
+            <a href="product.details.html?product=asian-luxe-bangle" class="card-btn">View Details</a>
         </div>
+
         <div class="card">
             <img src="../images/Gold Luxe Bangle.jpg" alt="Aura Bangle">
             <h3>Gold Luxe Bangle</h3>
             <!-- <p class="price">GH₵150.00</p> -->
-            <a href="product.details.html?product=gold-luxe-bangle" class="btn">View Details</a>
+            <a href="product.details.html?product=gold-luxe-bangle" class="card-btn">View Details</a>
         </div>
+
         <div class="card">
             <img src="..//images/AS Luxe Bangle.jpg" alt="Silver Bangle">
             <h3>AS Luxe Bangle</h3>
             <!-- <p class="price">GH₵150.00</p> -->
-            <a href="product.details.html?product=as-luxe-bangle" class="btn">View Details</a>
+            <a href="product.details.html?product=as-luxe-bangle" class="card-btn">View Details</a>
         </div>
+
         <div class="card">
             <img src="../images/Bloom Bangle.jpg" alt="Silver Bangle">
             <h3>Bloom Bangle</h3>
             <!-- <p class="price">GH₵150.00</p> -->
-            <a href="product.details.html?product=bloom-bangle" class="btn">View Details</a>
+            <a href="product.details.html?product=bloom-bangle" class="card-btn">View Details</a>
         </div>
+        
         <div class="card">
             <img src="../images/L Luxe Bangle.jpg" alt="Silver Bangle">
             <h3>L Luxe Bangle</h3>
             <!-- <p class="price">GH₵150.00</p> -->
-            <a href="product.details.html?product=l-luxe-bangle" class="btn">View Details</a>
+            <a href="product.details.html?product=l-luxe-bangle" class="card-btn">View Details</a>
+        </div>
+
         </div>
     </section>
 </body>
