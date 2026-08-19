@@ -435,6 +435,187 @@ const products = {
 
 
 /* =========================================
+   AL LUXE PRODUCT SEARCH
+========================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const searchInput = document.getElementById("productSearchInput");
+    const searchForm = document.getElementById("productSearchForm");
+    const searchResults = document.getElementById("searchResults");
+    const searchEmpty = document.getElementById("searchEmpty");
+    const resultCount = document.getElementById("searchResultCount");
+
+    // Only run this code on the search page
+    if (!searchInput || !searchResults) {
+        return;
+    }
+
+
+    /* =========================================
+       DISPLAY PRODUCTS
+    ========================================= */
+
+    function displayProducts(productList) {
+
+        searchResults.innerHTML = "";
+
+        if (productList.length === 0) {
+
+            searchEmpty.style.display = "flex";
+            resultCount.textContent = "";
+
+            return;
+        }
+
+        searchEmpty.style.display = "none";
+
+        resultCount.textContent =
+            `${productList.length} ${productList.length === 1 ? "piece" : "pieces"} found`;
+
+
+        productList.forEach(function (product) {
+
+            const card = document.createElement("a");
+
+            card.className = "search-result-card";
+
+                card.href = `product.details.html?product=${encodeURIComponent(product.id)}`;
+
+
+            card.innerHTML = `
+
+                <div class="search-result-image">
+
+                    <img
+                        src="${product.image}"
+                        alt="${product.name}"
+                    >
+
+                </div>
+
+
+                <div class="search-result-info">
+
+                    <span class="search-result-type">
+                        AL LUXE COLLECTION
+                    </span>
+
+                    <h3>
+                        ${product.name}
+                    </h3>
+
+                    <p>
+                        ${product.description}
+                    </p>
+
+                    <strong>
+                        GH₵${product.price.toFixed(2)}
+                    </strong>
+
+                    <span class="view-product">
+                        View Product
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </span>
+
+                </div>
+
+            `;
+
+            searchResults.appendChild(card);
+
+        });
+
+    }
+
+
+    /* =========================================
+       GET ALL PRODUCTS
+    ========================================= */
+
+    const allProducts = Object.entries(products).map(
+        function ([id, product]) {
+
+            return {
+                id: id,
+                ...product
+            };
+
+        }
+    );
+
+
+    /* =========================================
+       SEARCH PRODUCTS
+    ========================================= */
+
+    function searchProducts(searchTerm) {
+
+        const term = searchTerm.toLowerCase().trim();
+
+        if (term === "") {
+
+            displayProducts(allProducts);
+
+            return;
+        }
+
+
+        const filteredProducts = allProducts.filter(
+            function (product) {
+
+                return (
+                    product.name.toLowerCase().includes(term) ||
+                    product.description.toLowerCase().includes(term)
+                );
+
+            }
+        );
+
+
+        displayProducts(filteredProducts);
+
+    }
+
+
+    /* =========================================
+       LIVE SEARCH
+    ========================================= */
+
+    searchInput.addEventListener("input", function () {
+
+        searchProducts(searchInput.value);
+
+    });
+
+
+    /* =========================================
+       FORM SUBMISSION
+    ========================================= */
+
+    if (searchForm) {
+
+        searchForm.addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+            searchProducts(searchInput.value);
+
+        });
+
+    }
+
+
+    /* =========================================
+       SHOW ALL PRODUCTS INITIALLY
+    ========================================= */
+
+    displayProducts(allProducts);
+
+});
+
+
+/* =========================================
    GET PRODUCT FROM URL
 ========================================= */
 
@@ -1200,7 +1381,7 @@ const checkoutForm = document.getElementById("checkoutForm");
 
 if (checkoutForm) {
 
-    checkoutForm.addEventListener("submit", function (event) {
+    checkoutForm.addEventListener("submit", async function (event) {
 
         // Stop the form from refreshing the page
         event.preventDefault();
@@ -1261,35 +1442,36 @@ if (checkoutForm) {
         // Create order
         const order = {
 
-            orderNumber:
-                "AL" + Date.now(),
+    orderNumber: "AL" + Date.now(),
 
-            customer: {
+    customer: {
+        fullName: fullName,
+        phone: phone,
+        email: email,
+        region: region,
+        city: city,
+        address: address,
+        notes: notes
+    },
 
-                fullName: fullName,
+    paymentMethod: payment,
 
-                phone: phone,
+    products: cart,
 
-                email: email,
+    total: cart.reduce(function (total, item) {
 
-                region: region,
+        return total +
+            (Number(item.price) * Number(item.quantity));
 
-                city: city,
+    }, 0),
 
-                address: address,
+    date: new Date().toISOString()
+};
 
-                notes: notes
+        /* SEND EMAIL ALERT */
 
-            },
+           await sendOrderEmail(order);
 
-            paymentMethod: payment,
-
-            products: cart,
-
-            date:
-                new Date().toISOString()
-
-        };
 
         // Save order
         localStorage.setItem(
@@ -1922,3 +2104,38 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+
+/* =========================================
+   AL LUXE LOGIN
+========================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const loginForm =
+        document.getElementById("loginForm");
+
+    if (!loginForm) {
+        return;
+    }
+
+    loginForm.addEventListener("submit", function (event) {
+
+        event.preventDefault();
+
+        showNotification(
+            "WELCOME BACK",
+            "Welcome back to AL Luxe. We're delighted to have you with us again.",
+            "Continue",
+            function () {
+
+                window.location.href = "../index.html";
+
+            }
+        );
+
+    });
+
+});
+
+
+
