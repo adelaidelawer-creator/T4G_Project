@@ -82,7 +82,7 @@ body {
     .collection-grid {
         grid-template-columns: 1fr;
         padding: 25px 6% 60px;
-    }
+    }g
 
     .category-page .hero {
         padding: 60px 6% 35px;

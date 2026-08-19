@@ -10,9 +10,16 @@
     <title>Your Cart | AL Luxe</title>
 
     <link rel="stylesheet" href="../src/style.css">
+    
+   <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+    <!-- Font Awesome -->
     <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
 
 </head>
 
@@ -24,7 +31,7 @@
      HEADER
 ========================================= -->
 
-<header class="cart-header-nav">
+<header>
 
     <div class="logo">
 
@@ -37,25 +44,15 @@
 
         <ul>
 
-            <li>
-                <a href="index.html">HOME</a>
-            </li>
+            <li><a href="../index.html" >Home</a></li>
 
-            <li>
-                <a href="collections.html">ABOUT</a>
-            </li>
+            <li><a href="about.html">About</a></li>
 
-            <li>
-                <a href="contact.html">CONTACT</a>
-            </li>
+            <li><a href="collections.html">Collections</a></li>
 
-            <li>
-                <a href="login.html">LOGIN</a>
-            </li>
+            <li><a href="contact.html">Contact</a></li>
 
-            <li>
-                <a href="signup.html">SIGNUP</a>
-            </li>
+            <li><a href="login.html">Login</a></li>
 
             <li>
                 <a href="wishlist.html">
@@ -64,12 +61,16 @@
             </li>
 
             <li>
-                <i class="fa-solid fa-magnifying-glass"></i>
+                <a href="search.html">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </a>
+
             </li>
 
+
             <li>
-                <a href="cart.html">
-                    <i class="fa-solid fa-cart-shopping cart-icon"></i>
+                <a href="cart.html" class="active">
+                    <i class="fa-solid fa-cart-shopping cart-icon"  ></i>
                 </a>
             </li>
 
@@ -314,81 +315,295 @@
 
 
 
-<!-- =========================================
-     FOOTER
-========================================= -->
+<!-- =========================================================
+     AL LUXE — UNIVERSAL FOOTER
+========================================================= -->
 
-<footer class="cart-footer">
+<!-- SERVICE BENEFITS -->
+<section class="footer-services">
+
+    <div class="footer-service">
+        <i class="fa-solid fa-truck-fast"></i>
+
+        <div class="footer-service-content">
+            <h4>Free Shipping</h4>
+            <p>On selected orders</p>
+        </div>
+    </div>
 
 
-    <div class="footer-brand">
+    <div class="footer-service">
+        <i class="fa-solid fa-rotate-left"></i>
 
-        <h2>AL Luxe</h2>
+        <div class="footer-service-content">
+            <h4>Easy Returns</h4>
+            <p>Simple and stress-free</p>
+        </div>
+    </div>
 
-        <div class="social-icons">
 
-            <a href="#">
-                <i class="fa-brands fa-instagram"></i>
-            </a>
+    <div class="footer-service">
+        <i class="fa-solid fa-lock"></i>
 
-            <a href="#">
-                <i class="fa-brands fa-twitter"></i>
-            </a>
+        <div class="footer-service-content">
+            <h4>Secure Payment</h4>
+            <p>Safe & trusted checkout</p>
+        </div>
+    </div>
 
-            <a href="#">
-                <i class="fa-brands fa-facebook-f"></i>
-            </a>
 
-            <a href="#">
-                <i class="fa-brands fa-pinterest-p"></i>
-            </a>
+    <div class="footer-service">
+        <i class="fa-regular fa-gem"></i>
+
+        <div class="footer-service-content">
+            <h4>Quality Pieces</h4>
+            <p>Selected with care</p>
+        </div>
+    </div>
+
+</section>
+
+
+
+<!-- MAIN FOOTER -->
+
+<footer class="footer">
+
+    <div class="footer-container">
+
+
+        <!-- BRAND -->
+
+        <div class="footer-brand">
+
+            <h2>AL LUXE</h2>
+
+            <p>
+                Timeless pieces for modern elegance.
+            </p>
 
         </div>
 
-    </div>
+
+        <hr>
+
+
+        <!-- FOOTER CONTENT -->
+
+        <div class="footer-grid">
+
+
+            <!-- SHOP -->
+
+            <div class="footer-column">
+
+                <h3>SHOP</h3>
+
+                <ul>
+
+                    <li>
+                        <a href="../index.html">
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="collections.html">
+                            Collections
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="watches.html">
+                            Watches
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="about.html">
+                            About Us
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
 
 
 
-    <div class="newsletter">
+            <!-- CUSTOMER CARE -->
 
-        <div class="newsletter-form">
+            <div class="footer-column">
 
-            <input
-                type="email"
-                placeholder="ENTER EMAIL ADDRESS">
+                <h3>CUSTOMER CARE</h3>
 
-            <button>
-                SUBSCRIBE
-            </button>
+                <ul>
+
+                    <li>
+                        <a href="contact.html">
+                            Contact Us
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            Shipping & Delivery
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            Returns & Exchanges
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            Privacy Policy
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+
+            <!-- CONTACT -->
+
+            <div class="footer-column">
+
+                <h3>CONTACT</h3>
+
+                <ul>
+
+                    <li>
+                        +233 25 700 8392
+                    </li>
+
+                    <li>
+                        adelaidelawer@gmail.com
+                    </li>
+
+                    <li>
+                        Accra, Ghana
+                    </li>
+
+                </ul>
+
+
+                <!-- SOCIAL MEDIA -->
+
+                <div class="footer-socials">
+
+                    <a
+                        href="https://www.instagram.com/aku.lawer"
+                        target="_blank"
+                        aria-label="Instagram"
+                    >
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+
+                    <a
+                        href="https://wa.me/233257008392"
+                        target="_blank"
+                        aria-label="WhatsApp"
+                    >
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+
+
+                    <a
+                        href="#"
+                        aria-label="Facebook"
+                    >
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+
+
+                    <a
+                        href="#"
+                        aria-label="Pinterest"
+                    >
+                        <i class="fa-brands fa-pinterest-p"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- NEWSLETTER -->
+
+            <div class="footer-column footer-newsletter">
+
+                <h3>JOIN OUR WORLD</h3>
+
+                <p>
+                    Subscribe for new arrivals, exclusive offers
+                    and the latest from AL Luxe.
+                </p>
+
+
+                <form class="newsletter">
+
+                    <input
+                        type="email"
+                        id="newsletterEmail"
+                        name="email"
+                        placeholder="Enter your email"
+                        autocomplete="email"
+                        required
+                    >
+
+                    <button type="submit">
+                        Subscribe
+                    </button>
+
+                </form>
+
+            </div>
+
 
         </div>
 
+
+        <hr>
+
+
+        <!-- FOOTER BOTTOM -->
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 AL Luxe Jewelry. All Rights Reserved.
+            </p>
+
+
+            <div class="footer-links">
+
+                <a href="#">
+                    Privacy
+                </a>
+
+                <a href="#">
+                    Terms
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+            </div>
+
+        </div>
+
+
     </div>
-
-
-
-    <div class="footer-links">
-
-        <a href="index.html">HOME</a>
-
-        <a href="about.html">ABOUT</a>
-
-        <a href="contact.html">CONTACT</a>
-
-        <a href="login.html">LOGIN</a>
-
-    </div>
-
 
 </footer>
-
-
-
-<div class="copyright">
-
-    © 2026 AL Luxe Jewelry
-
-</div>
 
 
 
