@@ -2836,6 +2836,8 @@ p {
 /* Generic content section only.
    Structural sections such as cart-main and footer services
    define their own spacing below. */
+
+   
 .page-section,
 section:not(.cart-main):not(.footer-services):not(.cart-services):not(.product-services) {
     padding: 80px 10%;
