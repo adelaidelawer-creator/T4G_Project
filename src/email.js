@@ -2,9 +2,14 @@
    AL LUXE EMAIL NOTIFICATION SYSTEM
 ========================================= */
 
+/* =========================================
+   EMAILJS CONFIGURATION
+========================================= */
+
 const EMAILJS_PUBLIC_KEY = "FhcH6rXg1PTbPwEz_";
 const EMAILJS_SERVICE_ID = "service_ivm5hdo";
-const EMAILJS_TEMPLATE_ID = "template_2sr7d98";
+const EMAILJS_ORDER_TEMPLATE_ID = "template_2sr7d98";
+const EMAILJS_WELCOME_TEMPLATE_ID = "template_ypu785s";
 
 
 /* =========================================
@@ -16,6 +21,10 @@ if (typeof emailjs !== "undefined") {
     emailjs.init({
         publicKey: EMAILJS_PUBLIC_KEY
     });
+
+} else {
+
+    console.error("EmailJS library has not been loaded.");
 
 }
 
@@ -36,30 +45,77 @@ async function sendOrderEmail(order) {
     }
 
 
-    const customer =
-        order.customer || {};
+    const customer = order?.customer || {};
+    const products = order?.products || [];
 
 
     /* =========================================
        FORMAT ORDER ITEMS
     ========================================= */
 
-    const orderItems =
-        (order.products || [])
-            .map(function (item) {
+    const orderItems = products
+        .map(function (item) {
 
-                const itemTotal =
-                    Number(item.price || 0) *
-                    Number(item.quantity || 0);
+            const price =
+                Number(item.price || 0);
 
-                return (
-                    `${item.name} | ` +
-                    `Qty: ${item.quantity} | ` +
-                    `GH₵${itemTotal.toFixed(2)}`
-                );
+            const quantity =
+                Number(item.quantity || 0);
 
-            })
-            .join("\n");
+            const itemTotal =
+                price * quantity;
+
+            return (
+                `${item.name} | ` +
+                `Qty: ${quantity} | ` +
+                `GH₵${itemTotal.toFixed(2)}`
+            );
+
+        })
+        .join("\n");
+
+
+    /* =========================================
+       PREPARE EMAIL DATA
+    ========================================= */
+
+    const templateParams = {
+
+        order_id:
+            order?.orderNumber || "N/A",
+
+        customer_name:
+            customer.fullName || "Customer",
+
+        email:
+            customer.email || "",
+
+        phone:
+            customer.phone || "Not provided",
+
+        region:
+            customer.region || "Not provided",
+
+        city:
+            customer.city || "Not provided",
+
+        address:
+            customer.address || "Not provided",
+
+        notes:
+            customer.notes ||
+            "No additional notes",
+
+        payment_method:
+            order?.paymentMethod || "Not provided",
+
+        order_items:
+            orderItems || "No items",
+
+        order_total:
+            `GH₵${Number(order?.total || 0).toFixed(2)}`
+
+    };
 
 
     /* =========================================
@@ -70,44 +126,8 @@ async function sendOrderEmail(order) {
 
         await emailjs.send(
             EMAILJS_SERVICE_ID,
-            EMAILJS_TEMPLATE_ID,
-            {
-
-                order_id:
-                    order.orderNumber,
-
-                customer_name:
-                    customer.fullName,
-
-                email:
-                    customer.email,
-
-                phone:
-                    customer.phone,
-
-                region:
-                    customer.region,
-
-                city:
-                    customer.city,
-
-                address:
-                    customer.address,
-
-                notes:
-                    customer.notes ||
-                    "No additional notes",
-
-                payment_method:
-                    order.paymentMethod,
-
-                order_items:
-                    orderItems,
-
-                order_total:
-                    `GH₵${Number(order.total || 0).toFixed(2)}`
-
-            }
+            EMAILJS_ORDER_TEMPLATE_ID,
+            templateParams
         );
 
 
@@ -133,6 +153,7 @@ async function sendOrderEmail(order) {
 
 }
 
+
 /* =========================================
    AL LUXE PREMIUM MODAL
 ========================================= */
@@ -144,7 +165,9 @@ function showALuxeModal(
     callback = null
 ) {
 
-    /* Remove existing modal */
+    /* =========================================
+       REMOVE EXISTING MODAL
+    ========================================= */
 
     const existingModal =
         document.querySelector(".aluxe-modal-overlay");
@@ -154,7 +177,9 @@ function showALuxeModal(
     }
 
 
-    /* Create modal */
+    /* =========================================
+       CREATE MODAL
+    ========================================= */
 
     const overlay =
         document.createElement("div");
@@ -210,7 +235,9 @@ function showALuxeModal(
     document.body.appendChild(overlay);
 
 
-    /* Show modal */
+    /* =========================================
+       SHOW MODAL
+    ========================================= */
 
     setTimeout(function () {
 
@@ -219,6 +246,10 @@ function showALuxeModal(
     }, 10);
 
 
+    /* =========================================
+       MODAL BUTTONS
+    ========================================= */
+
     const closeButton =
         overlay.querySelector(".aluxe-modal-close");
 
@@ -226,7 +257,9 @@ function showALuxeModal(
         overlay.querySelector(".aluxe-modal-button");
 
 
-    /* Close modal */
+    /* =========================================
+       CLOSE MODAL
+    ========================================= */
 
     function closeModal() {
 
@@ -247,7 +280,9 @@ function showALuxeModal(
     );
 
 
-    /* Action button */
+    /* =========================================
+       ACTION BUTTON
+    ========================================= */
 
     actionButton.addEventListener(
         "click",
@@ -267,7 +302,9 @@ function showALuxeModal(
     );
 
 
-    /* Click outside */
+    /* =========================================
+       CLICK OUTSIDE MODAL
+    ========================================= */
 
     overlay.addEventListener(
         "click",
@@ -284,133 +321,195 @@ function showALuxeModal(
 
 }
 
+
 /* =========================================
    AL LUXE SIGNUP WELCOME EMAIL
 ========================================= */
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
 
-    const signupForm = document.getElementById("signupForm");
-
-    if (!signupForm) {
-        return;
-    }
-
-    emailjs.init({
-        publicKey: "FhcH6rXg1PTbPwEz_"
-    });
-
-
-    signupForm.addEventListener("submit", function (event) {
-
-        event.preventDefault();
-
-
-        const name =
-            document.getElementById("signupName").value.trim();
-
-        const email =
-            document.getElementById("signupEmail").value.trim();
-
-        const phone =
-            document.getElementById("signupPhone").value.trim();
-
-        const password =
-            document.getElementById("signupPassword").value;
-
-        const confirmPassword =
-            document.getElementById("confirmPassword").value;
+        const signupForm =
+            document.getElementById("signupForm");
 
 
         /* =====================================
-           CHECK PASSWORDS
+           CHECK IF SIGNUP FORM EXISTS
         ===================================== */
 
-        if (password !== confirmPassword) {
-
-            showALuxeModal(
-    "PASSWORDS DO NOT MATCH",
-    "Please make sure both password fields contain the same password.",
-    "Try Again"
-);
+        if (!signupForm) {
             return;
-
         }
 
 
         /* =====================================
-           SAVE USER
+           SIGNUP FORM SUBMISSION
         ===================================== */
 
-        const user = {
+        signupForm.addEventListener(
+            "submit",
+            async function (event) {
 
-            name: name,
-
-            email: email,
-
-            phone: phone
-
-        };
+                event.preventDefault();
 
 
-        localStorage.setItem(
-            "alLuxeUser",
-            JSON.stringify(user)
+                /* =================================
+                   GET FORM VALUES
+                ================================= */
+
+                const name =
+                    document
+                        .getElementById("signupName")
+                        .value
+                        .trim();
+
+
+                const email =
+                    document
+                        .getElementById("signupEmail")
+                        .value
+                        .trim();
+
+
+                const phone =
+                    document
+                        .getElementById("signupPhone")
+                        .value
+                        .trim();
+
+
+                const password =
+                    document
+                        .getElementById("signupPassword")
+                        .value;
+
+
+                const confirmPassword =
+                    document
+                        .getElementById("confirmPassword")
+                        .value;
+
+
+                /* =================================
+                   CHECK PASSWORDS
+                ================================= */
+
+                if (password !== confirmPassword) {
+
+                    showALuxeModal(
+                        "PASSWORDS DO NOT MATCH",
+                        "Please make sure both password fields contain the same password.",
+                        "Try Again"
+                    );
+
+                    return;
+
+                }
+
+
+                /* =================================
+                   SAVE USER
+                ================================= */
+
+                const user = {
+
+                    name: name,
+
+                    email: email,
+
+                    phone: phone
+
+                };
+
+
+                localStorage.setItem(
+                    "alLuxeUser",
+                    JSON.stringify(user)
+                );
+
+
+                /* =================================
+                   PREPARE WELCOME EMAIL
+                ================================= */
+
+                const templateParams = {
+
+                    customer_name:
+                        name,
+
+                    email:
+                        email
+
+                };
+
+
+                /* =================================
+                   SEND WELCOME EMAIL
+                ================================= */
+
+                try {
+
+                    await emailjs.send(
+                        EMAILJS_SERVICE_ID,
+                        EMAILJS_WELCOME_TEMPLATE_ID,
+                        templateParams
+                    );
+
+
+                    console.log(
+                        "AL Luxe welcome email sent successfully."
+                    );
+
+
+                    /* =============================
+                       SUCCESS MODAL
+                    ============================= */
+
+                    showALuxeModal(
+                        "WELCOME TO AL LUXE",
+                        `Your account has been created successfully. A welcome email has been sent to ${email}.`,
+                        "Continue",
+                        function () {
+
+                            window.location.href =
+                                "login.html";
+
+                        }
+                    );
+
+
+                } catch (error) {
+
+                    console.error(
+                        "Welcome email failed:",
+                        error
+                    );
+
+
+                    /* =============================
+                       EMAIL FAILURE MODAL
+                    ============================= */
+
+                    showALuxeModal(
+                        "ALMOST THERE",
+                        "Your account was created, but we couldn't send the welcome email. Please check your connection and try again.",
+                        "Continue",
+                        function () {
+
+                            window.location.href =
+                                "login.html";
+
+                        }
+                    );
+
+                }
+
+            }
         );
 
-
-        /* =====================================
-           SEND WELCOME EMAIL
-        ===================================== */
-
-        const templateParams = {
-
-            customer_name: name,
-
-            email: email
-
-        };
-
-
-        emailjs.send(
-            "service_ivm5hdo",
-            "template_ypu785s",
-            templateParams
-        )
-
-        .then(function () {
-
-            showALuxeModal(
-            "WELCOME TO AL LUXE",
-            `Your account has been created successfully. A welcome email has been sent to ${email}.`,
-            "Continue",
-    function () {
-        window.location.href = "login.html";
     }
 );
-            window.location.href = "login.html";
 
-        })
-
-        .catch(function (error) {
-
-            console.error(
-                "Welcome email failed:",
-                error
-            );
-
-           showALuxeModal(
-    "ALMOST THERE",
-    "Your account was created, but we couldn't send the welcome email. Please check your connection and try again.",
-    "Continue",
-    function () {
-        window.location.href = "login.html";
-    }
-);
-            window.location.href = "login.html";
-
-        });
-
-    });
-
-});
+console.log("CUSTOMER EMAIL BEING SENT:", customer.email);
+console.log("EMAILJS PARAMETERS:", templateParams);

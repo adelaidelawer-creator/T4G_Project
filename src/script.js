@@ -2137,5 +2137,124 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
+/* =========================================
+   AL LUXE NAVIGATION ITEM COUNTS
+========================================= */
+
+function updateNavigationCounts() {
+
+    const cartCountElement =
+        document.getElementById("cartCount");
+
+    const wishlistCountElement =
+        document.getElementById("wishlistCount");
 
 
+    /* =========================================
+       CART COUNT
+    ========================================= */
+
+    let cart = [];
+
+    try {
+
+        cart =
+            JSON.parse(
+                localStorage.getItem("alLuxeCart")
+            ) || [];
+
+    } catch (error) {
+
+        cart = [];
+
+    }
+
+
+    const cartCount =
+        cart.reduce(
+            function (total, item) {
+
+                return total +
+                    Number(item.quantity || 0);
+
+            },
+            0
+        );
+
+
+    /* =========================================
+       WISHLIST COUNT
+    ========================================= */
+
+    let wishlist = [];
+
+    try {
+
+        wishlist =
+            JSON.parse(
+                localStorage.getItem("alLuxeWishlist")
+            ) || [];
+
+    } catch (error) {
+
+        wishlist = [];
+
+    }
+
+
+    const wishlistCount =
+        Array.isArray(wishlist)
+            ? wishlist.length
+            : 0;
+
+
+    /* =========================================
+       DISPLAY CART BADGE
+    ========================================= */
+
+    if (cartCountElement) {
+
+        cartCountElement.textContent =
+            cartCount;
+
+        cartCountElement.style.display =
+            cartCount > 0 ? "flex" : "none";
+
+    }
+
+
+    /* =========================================
+       DISPLAY WISHLIST BADGE
+    ========================================= */
+
+    if (wishlistCountElement) {
+
+        wishlistCountElement.textContent =
+            wishlistCount;
+
+        wishlistCountElement.style.display =
+            wishlistCount > 0 ? "flex" : "none";
+
+    }
+
+}
+
+
+/* =========================================
+   INITIAL LOAD
+========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    updateNavigationCounts
+);
+
+
+/* =========================================
+   UPDATE WHEN STORAGE CHANGES
+========================================= */
+
+window.addEventListener(
+    "storage",
+    updateNavigationCounts
+);
