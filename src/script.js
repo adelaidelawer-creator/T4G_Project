@@ -1506,6 +1506,12 @@ localStorage.setItem(
     JSON.stringify(order)
 );
 
+// Clear the cart after successful order
+localStorage.removeItem("alLuxeCart");
+
+// Redirect to order confirmation page
+window.location.href = "order-confirmation.html";
+
     });
 
 }
@@ -2395,6 +2401,139 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+
+
+/* =========================================
+   AL LUXE LOGIN BUTTON INTERCEPTOR
+========================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    // Check if user is already logged in
+    const isLoggedIn = localStorage.getItem("alLuxeLoggedIn") === "true";
+    
+    if (!isLoggedIn) {
+        return; // User is not logged in, allow normal navigation
+    }
+
+    // Get all login links on the page
+    const loginLinks = document.querySelectorAll('a[href*="login.html"], a[href="login.html"]');
+
+    loginLinks.forEach(function (link) {
+        link.addEventListener("click", function (event) {
+            event.preventDefault();
+
+            // Get logged in user information
+            let loggedInUser = {};
+            try {
+                loggedInUser = JSON.parse(localStorage.getItem("alLuxeLoggedInUser")) || {};
+            } catch (error) {
+                loggedInUser = {};
+            }
+
+            const userName = loggedInUser.name || "Friend";
+
+            // Show already logged in message
+            showAlreadyLoggedInMessage(userName);
+        });
+    });
+
+});
+
+
+/* =========================================
+   AL LUXE ALREADY LOGGED IN MESSAGE
+========================================= */
+
+function showAlreadyLoggedInMessage(userName) {
+    
+    const existingModal = document.querySelector(".aluxe-already-logged-modal-overlay");
+    
+    if (existingModal) {
+        existingModal.remove();
+    }
+
+    const overlay = document.createElement("div");
+    overlay.className = "aluxe-already-logged-modal-overlay";
+
+    overlay.innerHTML = `
+        <div class="aluxe-already-logged-modal">
+            <div class="aluxe-logged-icon">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+
+            <h2>Hey, ${userName} 👋</h2>
+            <p>You're already logged in to AL Luxe.</p>
+
+            <div class="aluxe-logged-actions">
+                <button type="button" class="aluxe-view-profile-btn">
+                    <i class="fa-regular fa-user"></i>
+                    View Profile
+                </button>
+                <button type="button" class="aluxe-continue-shopping-btn">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    Continue Shopping
+                </button>
+                <button type="button" class="aluxe-logout-btn">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    Log Out
+                </button>
+            </div>
+
+            <button type="button" class="aluxe-modal-close-btn" aria-label="Close">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+    `;
+
+    document.body.appendChild(overlay);
+
+    // Close button
+    const closeBtn = overlay.querySelector(".aluxe-modal-close-btn");
+    closeBtn.addEventListener("click", function () {
+        overlay.remove();
+    });
+
+    // View Profile button
+    const viewProfileBtn = overlay.querySelector(".aluxe-view-profile-btn");
+    viewProfileBtn.addEventListener("click", function () {
+        overlay.remove();
+        window.location.href = "pages/profile.html";
+    });
+
+    // Continue Shopping button
+    const continueShoppingBtn = overlay.querySelector(".aluxe-continue-shopping-btn");
+    continueShoppingBtn.addEventListener("click", function () {
+        overlay.remove();
+        window.location.href = "pages/collections.html";
+    });
+
+    // Log Out button
+    const logoutBtn = overlay.querySelector(".aluxe-logout-btn");
+    logoutBtn.addEventListener("click", function () {
+        // Clear login data
+        localStorage.removeItem("alLuxeLoggedInUser");
+        localStorage.removeItem("alLuxeLoggedIn");
+        
+        overlay.remove();
+        
+        // Show logout confirmation
+        showLoginMessage(
+            "LOGGED OUT",
+            "You have been successfully logged out. See you next time!",
+            function () {
+                window.location.href = "index.html";
+            }
+        );
+    });
+
+    // Close modal when clicking outside
+    overlay.addEventListener("click", function (event) {
+        if (event.target === overlay) {
+            overlay.remove();
+        }
+    });
+}
 
 
 /* =========================================
