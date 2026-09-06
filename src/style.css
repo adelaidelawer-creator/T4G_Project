@@ -7534,7 +7534,7 @@ body {
 
 @media (max-width: 600px) {
     .featured .cards {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
     .featured .card img {
@@ -7625,4 +7625,69 @@ body {
     .aluxe-login-modal p {
         font-size: 12px;
     }
+}
+
+/* Keep repeating card grids consistent with the desktop composition. */
+@media (max-width: 767px) {
+    .cards,
+    .featured .cards {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .why-al-luxe-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .search-results {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .card img {
+        height: 125px;
+    }
+
+    .card h3 {
+        margin: 10px 5px 0;
+        font-size: 12px;
+    }
+
+    .card-btn,
+    .card .btn {
+        margin: 8px 0 12px;
+        padding: 7px 8px;
+        font-size: 9px;
+    }
+}
+
+@media (max-width: 380px) {
+    .cards,
+    .featured .cards,
+    .why-al-luxe-grid,
+    .search-results {
+        gap: 6px;
+    }
+
+    .card img {
+        height: 100px;
+    }
+
+    .card h3 {
+        font-size: 10px;
+    }
+
+    .card-btn,
+    .card .btn {
+        padding: 6px 4px;
+        font-size: 8px;
+    }
+}
+
+.products .card img,
+.products .collection-card img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
 }
