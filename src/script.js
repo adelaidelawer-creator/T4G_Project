@@ -1473,20 +1473,38 @@ if (checkoutForm) {
            await sendOrderEmail(order);
 
 
-        // Save order
-        localStorage.setItem(
-            "alLuxeOrder",
-            JSON.stringify(order)
-        );
+       // Save order to order history
+let orderHistory = [];
 
-        // Clear cart
-        localStorage.removeItem(
-            "alLuxeCart"
-        );
+try {
+    orderHistory =
+        JSON.parse(
+            localStorage.getItem("alLuxeOrders")
+        ) || [];
+} catch (error) {
+    orderHistory = [];
+}
 
-        // Go to confirmation page
-        window.location.href =
-            "order-confirmation.html";
+// Make sure order history is an array
+if (!Array.isArray(orderHistory)) {
+    orderHistory = [];
+}
+
+// Add the new order
+orderHistory.push(order);
+
+// Save all orders
+localStorage.setItem(
+    "alLuxeOrders",
+    JSON.stringify(orderHistory)
+);
+
+// Keep the latest order separately
+// for the confirmation page
+localStorage.setItem(
+    "alLuxeOrder",
+    JSON.stringify(order)
+);
 
     });
 
@@ -2106,13 +2124,137 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 /* =========================================
+   AL LUXE CONTACT FORM
+========================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const contactForm = document.getElementById("contactForm");
+
+    if (!contactForm) {
+        return;
+    }
+
+    contactForm.addEventListener("submit", function (event) {
+
+        event.preventDefault();
+
+        const fields = [
+            document.getElementById("contactName"),
+            document.getElementById("contactEmail"),
+            document.getElementById("contactSubject"),
+            document.getElementById("contactMessage")
+        ];
+
+        const invalidField = fields.find(function (field) {
+            return !field.value.trim() || !field.checkValidity();
+        });
+
+        if (invalidField) {
+            invalidField.reportValidity();
+            invalidField.focus();
+            return;
+        }
+
+        contactForm.reset();
+
+        showLoginMessage(
+            "MESSAGE RECEIVED",
+            "We have heard your concern and will work on it. For faster responses, WhatsApp us at +233 25 700 8392.",
+            function () {
+                window.location.href = "collections.html";
+            },
+            "Continue Shopping"
+        );
+
+    });
+
+});
+
+/* =========================================
+   AL LUXE SIGN UP
+========================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const signupForm = document.getElementById("signupForm");
+
+    if (!signupForm) {
+        return;
+    }
+
+    signupForm.addEventListener("submit", function (event) {
+
+        event.preventDefault();
+
+        const nameInput = document.getElementById("signupName");
+        const emailInput = document.getElementById("signupEmail");
+        const phoneInput = document.getElementById("signupPhone");
+        const passwordInput = document.getElementById("signupPassword");
+        const confirmPasswordInput = document.getElementById("confirmPassword");
+
+        const fields = [
+            nameInput,
+            emailInput,
+            phoneInput,
+            passwordInput,
+            confirmPasswordInput
+        ];
+
+        const invalidField = fields.find(function (field) {
+            return !field.value.trim() || !field.checkValidity();
+        });
+
+        if (invalidField) {
+            invalidField.reportValidity();
+            invalidField.focus();
+            return;
+        }
+
+        if (passwordInput.value !== confirmPasswordInput.value) {
+            showLoginMessage(
+                "PASSWORDS DO NOT MATCH",
+                "Please make sure both password fields contain the same password."
+            );
+            confirmPasswordInput.focus();
+            return;
+        }
+
+        const user = {
+            name: nameInput.value.trim(),
+            email: emailInput.value.trim().toLowerCase(),
+            phone: phoneInput.value.trim(),
+            password: passwordInput.value
+        };
+
+        localStorage.setItem("alLuxeUser", JSON.stringify(user));
+        localStorage.setItem("alLuxeProfile", JSON.stringify({
+            name: user.name,
+            email: user.email,
+            phone: user.phone,
+            location: "",
+            memberSince: "2026"
+        }));
+
+        showLoginMessage(
+            "ACCOUNT CREATED",
+            "Your AL Luxe account is ready. Continue to sign in.",
+            function () {
+                window.location.href = "login.html";
+            }
+        );
+
+    });
+
+});
+
+/* =========================================
    AL LUXE LOGIN
 ========================================= */
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    const loginForm =
-        document.getElementById("loginForm");
+    const loginForm = document.getElementById("loginForm");
 
     if (!loginForm) {
         return;
@@ -2122,10 +2264,127 @@ document.addEventListener("DOMContentLoaded", function () {
 
         event.preventDefault();
 
-        showNotification(
+        const emailInput = document.getElementById("loginEmail");
+        const passwordInput = document.getElementById("loginPassword");
+
+        const email = emailInput.value.trim().toLowerCase();
+        const password = passwordInput.value;
+
+        const savedUserData = localStorage.getItem("alLuxeUser");
+
+        /* -----------------------------------------
+           NO ACCOUNT FOUND
+        ----------------------------------------- */
+
+        if (!savedUserData) {
+
+            showLoginMessage(
+                "ACCOUNT NOT FOUND",
+                "We couldn't find an AL Luxe account with these details. Please create an account first."
+            );
+
+            return;
+        }
+
+        let user;
+
+        try {
+
+            user = JSON.parse(savedUserData);
+
+        } catch (error) {
+
+            console.error("Unable to read saved account:", error);
+
+            showLoginMessage(
+                "LOGIN ERROR",
+                "We couldn't access your account information. Please sign up again."
+            );
+
+            return;
+        }
+
+        /* -----------------------------------------
+           CHECK EMAIL
+        ----------------------------------------- */
+
+        if (
+            !user.email ||
+            user.email.trim().toLowerCase() !== email
+        ) {
+
+            showLoginMessage(
+                "INVALID EMAIL",
+                "The email address you entered does not match an AL Luxe account."
+            );
+
+            return;
+        }
+
+        /* -----------------------------------------
+           CHECK PASSWORD
+        ----------------------------------------- */
+
+        if (
+            !user.password ||
+            user.password !== password
+        ) {
+
+            showLoginMessage(
+                "INCORRECT PASSWORD",
+                "The password you entered is incorrect. Please try again."
+            );
+
+            return;
+        }
+
+        /* -----------------------------------------
+           LOGIN SUCCESSFUL
+        ----------------------------------------- */
+
+        const loggedInUser = {
+            name: user.name || "",
+            email: user.email || "",
+            phone: user.phone || ""
+        };
+
+        localStorage.setItem(
+            "alLuxeLoggedInUser",
+            JSON.stringify(loggedInUser)
+        );
+
+        localStorage.setItem(
+            "alLuxeLoggedIn",
+            "true"
+        );
+
+        let savedProfile = {};
+
+        try {
+            savedProfile = JSON.parse(
+                localStorage.getItem("alLuxeProfile")
+            ) || {};
+        } catch (error) {
+            savedProfile = {};
+        }
+
+        localStorage.setItem(
+            "alLuxeProfile",
+            JSON.stringify({
+                ...savedProfile,
+                name: loggedInUser.name,
+                email: loggedInUser.email,
+                phone: loggedInUser.phone
+            })
+        );
+
+        /* -----------------------------------------
+           SUCCESS MESSAGE
+        ----------------------------------------- */
+
+        showLoginMessage(
             "WELCOME BACK",
-            "Welcome back to AL Luxe. We're delighted to have you with us again.",
-            "Continue",
+            `Welcome back to AL Luxe, ${user.name || "our valued customer"}. We're delighted to have you with us again.`,
             function () {
 
                 window.location.href = "../index.html";
@@ -2136,6 +2395,432 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+
+
+/* =========================================
+   AL LUXE LOGIN MESSAGE
+========================================= */
+
+function showLoginMessage(
+    title,
+    message,
+    callback = null,
+    buttonText = "Continue"
+) {
+
+    const existingModal =
+        document.querySelector(".aluxe-login-modal-overlay");
+
+    if (existingModal) {
+        existingModal.remove();
+    }
+
+    const overlay = document.createElement("div");
+
+    overlay.className =
+        "aluxe-login-modal-overlay";
+
+    overlay.innerHTML = `
+        <div class="aluxe-login-modal">
+
+            <div class="aluxe-login-icon">
+                <i class="fa-solid fa-check"></i>
+            </div>
+
+            <h2>${title}</h2>
+
+            <p>${message}</p>
+
+            <button
+                type="button"
+                class="aluxe-login-modal-btn">
+                ${buttonText}
+            </button>
+
+        </div>
+    `;
+
+    document.body.appendChild(overlay);
+
+    const button =
+        overlay.querySelector(".aluxe-login-modal-btn");
+
+    button.addEventListener("click", function () {
+
+        overlay.remove();
+
+        if (typeof callback === "function") {
+            callback();
+        }
+
+    });
+
+}
+
+/* =========================================
+   AL LUXE PROFILE
+========================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const profileForm =
+        document.getElementById("profileForm");
+
+    if (!profileForm) {
+        return;
+    }
+
+
+    /* =========================================
+       PROFILE FIELDS
+    ========================================= */
+
+    const profileFields = {
+
+        name:
+            profileForm.elements.namedItem("name"),
+
+        email:
+            profileForm.elements.namedItem("email"),
+
+        phone:
+            profileForm.elements.namedItem("phone"),
+
+        location:
+            profileForm.elements.namedItem("location")
+
+    };
+
+
+    /* =========================================
+       PROFILE SIDEBAR
+    ========================================= */
+
+    const profileName =
+        document.querySelector(".profile-sidebar h2");
+
+    const profileEmail =
+        document.querySelector(".profile-email");
+
+
+    const profileStats =
+        document.querySelectorAll(
+            ".profile-stat strong"
+        );
+
+
+    /* =========================================
+       DEFAULT PROFILE
+       
+       A NEW USER STARTS WITH BLANK DETAILS.
+    ========================================= */
+
+    const defaultProfile = {
+
+        name: "",
+
+        email: "",
+
+        phone: "",
+
+        location: "",
+
+        memberSince: "2026"
+
+    };
+
+
+    /* =========================================
+       LOAD SAVED PROFILE
+    ========================================= */
+
+    let savedProfile = {};
+
+    try {
+
+        savedProfile =
+            JSON.parse(
+                localStorage.getItem("alLuxeProfile")
+            ) || {};
+
+    } catch (error) {
+
+        savedProfile = {};
+
+    }
+
+
+    /* =========================================
+       COMBINE DEFAULT + SAVED PROFILE
+    ========================================= */
+
+    const profile = {
+
+        ...defaultProfile,
+
+        ...savedProfile
+
+    };
+
+
+    /* =========================================
+       FILL FORM WITH SAVED INFORMATION
+       
+       If this is a new user, the fields
+       remain completely blank.
+    ========================================= */
+
+    Object.keys(profileFields).forEach(
+        function (fieldName) {
+
+            if (
+                profileFields[fieldName] &&
+                typeof profile[fieldName] === "string"
+            ) {
+
+                profileFields[fieldName].value =
+                    profile[fieldName];
+
+            }
+
+        }
+    );
+
+
+    /* =========================================
+       UPDATE PROFILE SUMMARY
+    ========================================= */
+
+    function updateProfileSummary() {
+
+
+        /* -------------------------------
+           SIDEBAR NAME
+        -------------------------------- */
+
+        if (profileName) {
+
+            profileName.textContent =
+                profileFields.name.value.trim() ||
+                "My Profile";
+
+        }
+
+
+        /* -------------------------------
+           SIDEBAR EMAIL
+        -------------------------------- */
+
+        if (profileEmail) {
+
+            profileEmail.textContent =
+                profileFields.email.value.trim() ||
+                "Enter your details below";
+
+        }
+
+
+       /* =========================================
+   ORDER COUNT
+========================================= */
+
+let orderHistory = [];
+
+try {
+
+    orderHistory =
+        JSON.parse(
+            localStorage.getItem("alLuxeOrders")
+        ) || [];
+
+} catch (error) {
+
+    orderHistory = [];
+
+}
+
+
+/* Make sure it is actually an array */
+
+if (!Array.isArray(orderHistory)) {
+
+    orderHistory = [];
+
+}
+
+
+const orderCount =
+    orderHistory.length;
+
+
+        /* =================================
+           WISHLIST COUNT
+        ================================= */
+
+        let wishlist = [];
+
+        try {
+
+            wishlist =
+                JSON.parse(
+                    localStorage.getItem("alLuxeWishlist")
+                ) || [];
+
+        } catch (error) {
+
+            wishlist = [];
+
+        }
+
+
+        /* =================================
+           UPDATE STATISTICS
+        ================================= */
+
+        if (profileStats.length >= 3) {
+
+            profileStats[0].textContent =
+             orderCount;
+
+
+            profileStats[1].textContent =
+                Array.isArray(wishlist)
+                    ? wishlist.length
+                    : "0";
+
+
+            profileStats[2].textContent =
+                profile.memberSince;
+
+        }
+
+    }
+
+
+    /* =========================================
+       INITIAL PROFILE DISPLAY
+    ========================================= */
+
+    updateProfileSummary();
+
+
+    /* =========================================
+       SAVE PROFILE
+    ========================================= */
+
+    profileForm.addEventListener(
+        "submit",
+        function (event) {
+
+            event.preventDefault();
+
+
+            /* -------------------------------
+               CHECK REQUIRED FIELDS
+            -------------------------------- */
+
+            const fields =
+                Object.values(profileFields);
+
+
+            const invalidField =
+                fields.find(
+                    function (field) {
+
+                        return (
+                            !field.value.trim() ||
+                            !field.checkValidity()
+                        );
+
+                    }
+                );
+
+
+            if (invalidField) {
+
+                invalidField.reportValidity();
+
+                invalidField.focus();
+
+                return;
+
+            }
+
+
+            /* =================================
+               CREATE UPDATED PROFILE
+            ================================= */
+
+            const updatedProfile = {
+
+                name:
+                    profileFields.name.value.trim(),
+
+                email:
+                    profileFields.email.value.trim(),
+
+                phone:
+                    profileFields.phone.value.trim(),
+
+                location:
+                    profileFields.location.value.trim(),
+
+                memberSince:
+                    profile.memberSince
+
+            };
+
+
+            /* =================================
+               SAVE TO LOCAL STORAGE
+            ================================= */
+
+            localStorage.setItem(
+
+                "alLuxeProfile",
+
+                JSON.stringify(updatedProfile)
+
+            );
+
+
+            /* =================================
+               UPDATE CURRENT PROFILE
+            ================================= */
+
+            profile.memberSince =
+                updatedProfile.memberSince;
+
+
+            updateProfileSummary();
+
+
+            /* =================================
+               SUCCESS MESSAGE
+            ================================= */
+
+            if (
+                typeof showNotification ===
+                "function"
+            ) {
+
+                showNotification(
+                    "Your profile has been updated."
+                );
+
+            } else {
+
+                alert(
+                    "Your profile has been updated."
+                );
+
+            }
+
+        }
+    );
+
+});
+
 
 /* =========================================
    AL LUXE NAVIGATION ITEM COUNTS
@@ -2174,8 +2859,10 @@ function updateNavigationCounts() {
         cart.reduce(
             function (total, item) {
 
-                return total +
-                    Number(item.quantity || 0);
+                return (
+                    total +
+                    Number(item.quantity || 0)
+                );
 
             },
             0
@@ -2218,7 +2905,9 @@ function updateNavigationCounts() {
             cartCount;
 
         cartCountElement.style.display =
-            cartCount > 0 ? "flex" : "none";
+            cartCount > 0
+                ? "flex"
+                : "none";
 
     }
 
@@ -2233,7 +2922,9 @@ function updateNavigationCounts() {
             wishlistCount;
 
         wishlistCountElement.style.display =
-            wishlistCount > 0 ? "flex" : "none";
+            wishlistCount > 0
+                ? "flex"
+                : "none";
 
     }
 

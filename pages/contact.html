@@ -58,6 +58,7 @@
                 <li><a href="contact.html" class="active">Contact</a></li>
 
                 <li><a href="login.html">Login</a></li>
+                 <li><a href="profile.html" class="icon-link" aria-label="My Profile"><i class="fa-regular fa-user"></i></a></li>
                  <li>
                   <a href="wishlist.html" class="icon-link" aria-label="Wishlist">
                       <i class="fa-regular fa-heart"></i>
@@ -69,7 +70,6 @@
 
                 <a href="search.html">
                  <i class="fa-solid fa-magnifying-glass"></i>
-                 <span class="icon-badge" id="cartCount">0</span>
                 </a>
 
             </li>
@@ -179,43 +179,54 @@
 
     <!-- CONTACT FORM -->
 
-    <section class="featured">
+<section class="featured">
 
-        <h2>Send Us A Message</h2>
+    <h2>Send Us A Message</h2>
 
-        <form class="contact-form">
+    <form class="contact-form" id="contactForm">
 
-            <input
-                type="text"
-                placeholder="Full Name"
-                required>
+        <input
+            type="text"
+            id="contactName"
+            name="name"
+            placeholder="Full Name"
+            autocomplete="name"
+            required>
 
-            <input
-                type="email"
-                placeholder="Email Address"
-                required>
+        <input
+            type="email"
+            id="contactEmail"
+            name="email"
+            placeholder="Email Address"
+            autocomplete="email"
+            required>
 
-            <input
-                type="text"
-                placeholder="Subject"
-                required>
+        <input
+            type="text"
+            id="contactSubject"
+            name="subject"
+            placeholder="Subject"
+            required>
 
-            <textarea
-                rows="7"
-                placeholder="Write your message..."
-                required></textarea>
+        <textarea
+            id="contactMessage"
+            name="message"
+            rows="7"
+            placeholder="Write your message..."
+            required></textarea>
 
-            <button
-                type="submit"
-                class="btn">
+        <button
+            type="submit"
+            class="btn"
+            id="contactSubmitButton">
 
-                Send Message
+            Send Message
 
-            </button>
+        </button>
 
-        </form>
+    </form>
 
-    </section>
+</section>
 
     <!-- WHY CONTACT US -->
 

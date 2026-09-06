@@ -409,25 +409,20 @@ document.addEventListener(
 
 
                 /* =================================
-                   SAVE USER
-                ================================= */
+                    SAVE USER
+                 ================================= */
 
-                const user = {
+                      const user = {
+                         name: name,
+                         email: email,
+                         phone: phone,
+                         password: password
+                    };
 
-                    name: name,
-
-                    email: email,
-
-                    phone: phone
-
-                };
-
-
-                localStorage.setItem(
-                    "alLuxeUser",
-                    JSON.stringify(user)
-                );
-
+                    localStorage.setItem(
+                     "alLuxeUser",
+                     JSON.stringify(user)
+                 );
 
                 /* =================================
                    PREPARE WELCOME EMAIL
@@ -511,5 +506,3 @@ document.addEventListener(
     }
 );
 
-console.log("CUSTOMER EMAIL BEING SENT:", customer.email);
-console.log("EMAILJS PARAMETERS:", templateParams);

@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Profile | AL Luxe</title>
+
+    <link rel="stylesheet" href="../src/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- ================================
+         HEADER
+    ================================= -->
+
+    <header>
+
+        <div class="logo">
+            <img src="../images/white logo.png" alt="AL Luxe Logo">
+        </div>
+
+        <nav>
+            <ul>
+
+                <li>
+                    <a href="../index.html">Home</a>
+                </li>
+
+                <li>
+                    <a href="about.html">About</a>
+                </li>
+
+                <li>
+                    <a href="collections.html">Collections</a>
+                </li>
+
+                <li>
+                    <a href="contact.html">Contact</a>
+                </li>
+
+                <li>
+                    <a
+                        href="profile.html"
+                        class="icon-link active"
+                        aria-label="My Profile">
+                        <i class="fa-regular fa-user"></i>
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        href="wishlist.html"
+                        class="icon-link"
+                        aria-label="Wishlist">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                        <span
+                            class="icon-badge"
+                            id="wishlistCount">
+                            0
+                        </span>
+
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        href="search.html"
+                        aria-label="Search">
+
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                    </a>
+                </li>
+
+                <li>
+                    <a
+                        href="cart.html"
+                        class="icon-link"
+                        aria-label="Shopping cart">
+
+                        <i class="fa-solid fa-cart-shopping"></i>
+
+                        <span
+                            class="icon-badge"
+                            id="cartCount">
+                            0
+                        </span>
+
+                    </a>
+                </li>
+
+            </ul>
+        </nav>
+
+    </header>
+
+
+    <!-- ================================
+         PROFILE PAGE
+    ================================= -->
+
+    <main class="profile-page">
+
+        <div class="cart-title profile-title">
+            <h1>MY PROFILE</h1>
+        </div>
+
+
+        <section class="profile-main">
+
+
+            <!-- ================================
+                 PROFILE SIDEBAR
+            ================================= -->
+
+            <aside class="profile-sidebar">
+
+                <div
+                    class="profile-avatar"
+                    aria-hidden="true">
+
+                    <i class="fa-regular fa-user"></i>
+
+                </div>
+
+
+                <!--
+                    These are now placeholders.
+                    JavaScript will replace them
+                    after the user saves their details.
+                -->
+
+                <h2>My Profile</h2>
+
+                <p class="profile-email">
+                    Enter your details below
+                </p>
+
+                <span class="profile-member">
+                    AL Luxe Member
+                </span>
+
+
+                <nav
+                    class="profile-menu"
+                    aria-label="Profile navigation">
+
+                    <a
+                        href="#account-details"
+                        class="profile-menu-link active">
+
+                        <i class="fa-regular fa-user"></i>
+
+                        Account Details
+
+                    </a>
+
+
+                    <a
+                        href="cart.html"
+                        class="profile-menu-link">
+
+                        <i class="fa-solid fa-box-open"></i>
+
+                        My Orders
+
+                    </a>
+
+
+                    <a
+                        href="wishlist.html"
+                        class="profile-menu-link">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                        Wishlist
+
+                    </a>
+
+
+                    <a
+                        href="login.html"
+                        class="profile-menu-link">
+
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+
+                        Sign Out
+
+                    </a>
+
+                </nav>
+
+            </aside>
+
+
+
+            <!-- ================================
+                 PROFILE CONTENT
+            ================================= -->
+
+            <div class="profile-content">
+
+
+                <div class="profile-heading">
+
+                    <div>
+
+                        <p class="profile-eyebrow">
+                            Welcome
+                        </p>
+
+                        <h2>
+                            Account Details
+                        </h2>
+
+                    </div>
+
+
+                    <p class="profile-note">
+                        Enter your details to make checkout
+                        faster and easier.
+                    </p>
+
+                </div>
+
+
+
+                <!-- ================================
+                     PROFILE FORM
+                ================================= -->
+
+                <form
+                    class="profile-form"
+                    id="profileForm"
+                    novalidate>
+
+
+                    <!-- FULL NAME -->
+
+                    <div class="profile-field">
+
+                        <label for="profileName">
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="profileName"
+                            name="name"
+                            placeholder="Enter your full name"
+                            autocomplete="name"
+                            required>
+
+                    </div>
+
+
+
+                    <!-- EMAIL -->
+
+                    <div class="profile-field">
+
+                        <label for="profileEmail">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="profileEmail"
+                            name="email"
+                            placeholder="Enter your email address"
+                            autocomplete="email"
+                            required>
+
+                    </div>
+
+
+
+                    <!-- PHONE -->
+
+                    <div class="profile-field">
+
+                        <label for="profilePhone">
+                            Phone Number
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="profilePhone"
+                            name="phone"
+                            placeholder="Enter your phone number"
+                            autocomplete="tel"
+                            required>
+
+                    </div>
+
+
+
+                    <!-- DELIVERY LOCATION -->
+
+                    <div class="profile-field">
+
+                        <label for="profileLocation">
+                            Delivery Location
+                        </label>
+
+                        <input
+                            type="text"
+                            id="profileLocation"
+                            name="location"
+                            placeholder="Enter your delivery location"
+                            autocomplete="address-level2"
+                            required>
+
+                    </div>
+
+
+
+                    <!-- SAVE BUTTON -->
+
+                    <div class="profile-form-actions">
+
+                        <button
+                            type="submit"
+                            class="checkout-btn">
+
+                            Save Changes
+
+                            <i class="fa-solid fa-check"></i>
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+
+
+                <!-- ================================
+                     PROFILE STATS
+                ================================= -->
+
+                <div
+                    class="profile-stats"
+                    aria-label="Account summary">
+
+
+                    <div class="profile-stat">
+
+                        <strong>0</strong>
+
+                        <span>
+                            Orders
+                        </span>
+
+                    </div>
+
+
+                    <div class="profile-stat">
+
+                        <strong>0</strong>
+
+                        <span>
+                            Wishlist Items
+                        </span>
+
+                    </div>
+
+
+                    <div class="profile-stat">
+
+                        <strong>2026</strong>
+
+                        <span>
+                            Member Since
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================================
+             CONTINUE SHOPPING
+        ================================= -->
+
+        <div class="continue-shopping-container profile-return">
+
+            <a
+                href="collections.html"
+                class="continue-shopping">
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+                Continue Shopping
+
+            </a>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- ================================
+         FOOTER SERVICES
+    ================================= -->
+
+    <section class="footer-services">
+
+
+        <div class="footer-service">
+
+            <i class="fa-solid fa-truck-fast"></i>
+
+            <div class="footer-service-content">
+
+                <h4>
+                    Free Shipping
+                </h4>
+
+                <p>
+                    On selected orders
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="footer-service">
+
+            <i class="fa-solid fa-rotate-left"></i>
+
+            <div class="footer-service-content">
+
+                <h4>
+                    Easy Returns
+                </h4>
+
+                <p>
+                    Simple and stress-free
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="footer-service">
+
+            <i class="fa-solid fa-lock"></i>
+
+            <div class="footer-service-content">
+
+                <h4>
+                    Secure Payment
+                </h4>
+
+                <p>
+                    Safe &amp; trusted checkout
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="footer-service">
+
+            <i class="fa-regular fa-gem"></i>
+
+            <div class="footer-service-content">
+
+                <h4>
+                    Quality Pieces
+                </h4>
+
+                <p>
+                    Selected with care
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================
+         FOOTER
+    ================================= -->
+
+    <footer class="footer">
+
+        <div class="footer-container">
+
+
+            <div class="footer-brand">
+
+                <h2>
+                    AL LUXE
+                </h2>
+
+                <p>
+                    Timeless pieces for modern elegance.
+                </p>
+
+            </div>
+
+
+            <hr>
+
+
+            <div class="footer-grid">
+
+
+                <!-- SHOP -->
+
+                <div class="footer-column">
+
+                    <h3>
+                        SHOP
+                    </h3>
+
+                    <ul>
+
+                        <li>
+                            <a href="../index.html">
+                                Home
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="collections.html">
+                                Collections
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="watches.html">
+                                Watches
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="about.html">
+                                About Us
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+
+                <!-- CUSTOMER CARE -->
+
+                <div class="footer-column">
+
+                    <h3>
+                        CUSTOMER CARE
+                    </h3>
+
+                    <ul>
+
+                        <li>
+                            <a href="contact.html">
+                                Contact Us
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                Shipping &amp; Delivery
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                Returns &amp; Exchanges
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                Privacy Policy
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+
+                <!-- CONTACT -->
+
+                <div class="footer-column">
+
+                    <h3>
+                        CONTACT
+                    </h3>
+
+                    <ul>
+
+                        <li>
+                            +233 25 700 8392
+                        </li>
+
+                        <li>
+                            adelaidelawer@gmail.com
+                        </li>
+
+                        <li>
+                            Accra, Ghana
+                        </li>
+
+                    </ul>
+
+
+                    <div class="footer-socials">
+
+                        <a
+                            href="https://www.instagram.com/aku.lawer"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Instagram">
+
+                            <i class="fa-brands fa-instagram"></i>
+
+                        </a>
+
+
+                        <a
+                            href="https://wa.me/233257008392"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="WhatsApp">
+
+                            <i class="fa-brands fa-whatsapp"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- NEWSLETTER -->
+
+                <div class="footer-column footer-newsletter">
+
+                    <h3>
+                        JOIN OUR WORLD
+                    </h3>
+
+                    <p>
+                        Subscribe for new arrivals,
+                        exclusive offers and the latest
+                        from AL Luxe.
+                    </p>
+
+
+                    <form class="newsletter">
+
+                        <input
+                            type="email"
+                            placeholder="Enter your email"
+                            aria-label="Email address"
+                            required>
+
+                        <button type="submit">
+                            Subscribe
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+
+            <hr>
+
+
+            <!-- FOOTER BOTTOM -->
+
+            <div class="footer-bottom">
+
+                <p>
+                    &copy; 2026 AL Luxe Jewelry.
+                    All Rights Reserved.
+                </p>
+
+
+                <div class="footer-links">
+
+                    <a href="#">
+                        Privacy
+                    </a>
+
+                    <a href="#">
+                        Terms
+                    </a>
+
+                    <a href="contact.html">
+                        Contact
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- ================================
+         JAVASCRIPT
+    ================================= -->
+
+    <script src="../src/script.js"></script>
+
+</body>
+
+</html>
